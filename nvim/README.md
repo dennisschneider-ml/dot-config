@@ -1,10 +1,22 @@
-# NeoVim Lua-configuration
+# NeoVim Lua-Configuration
 
 This is a NeoVim configuration written only in Lua and using alternatives to popular vim plugins written in Lua.
 
-## Motivation
+## Installed Plugins
 
-According to several Benchmarks (e.g. https://www.reddit.com/r/neovim/comments/oqi34r/lua_vs_vimscript_benchmark/), Lua is much faster than the old VimScript-language and actually is a real programming-language, resulting in a tidier configuration.
-The advantage of Lua-based plugins lies in their easier and more straight-forward configuration using the Lua-language.
-And lastly, since plugins can now be written in a universally-usable programming language, I expect more plugins with better code-quality to be written in general.
+- Standard-Vim Plugins for Usability: vim-surround, vim-commentary
+- vim-fugitive: Vim Git-Client Interface
+- himalaya: Vim Mail-Client
+- coc: Completion Engine
+- nvim-telescope: Alternative to fzf, written in Lua
+- nvim-tree: Alternative to nerdtree, written in Lua
+- true-zen: Alternative to Goyo, written in Lua
+- nvim-lualine: Alternative to lightline, written in Lua
+
+### Plugin Configuration
+The used plugin-manager ``packer.nvim`` uses the ``plugin`` directory to store compiled data.
+Since Lua automatically sources the files in ``plugin`` directory, plugin configuration files can be conveniently put here.
+
+### NeoVim Configuration
+The ``nvim`` directory can be uncluttered by putting the configuration files into the ``lua`` directory.
 
