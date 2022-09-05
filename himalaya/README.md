@@ -1,4 +1,6 @@
 # Himalaya Configuration
+Clean TUI for E-Mails in vim.
+
 A neat feature of Himalaya is the option to use a shell-command for password-input.
 In this manner, I have used the password manager ``pass`` in order to prevent adding a password in clear-text to a configuration file. 
 Since a multiline-entry is possible in ``pass``, it only looks at the first line as the password.
