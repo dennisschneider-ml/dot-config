@@ -1,0 +1,30 @@
+name = "Dennis Schneider"
+downloads-dir = "/home/dns/Downloads"
+
+[gmx]
+default = true
+# email = ""
+
+imap-host = "imap.gmx.com"
+imap-port = 993
+# imap-login = ""
+# Save password in ``pass`` password-tresor
+imap-passwd-cmd = "pass show otp_GMX | head -n 1"
+
+smtp-host = "mail.gmx.com"
+smtp-port = 587
+# smtp-login = ""
+smtp-passwd-cmd = "pass show otp_GMX | head -n 1"
+
+[gmail]
+# email = ""
+
+imap-host = "imap.gmail.com"
+imap-port = 993
+# imap-login = ""
+imap-passwd-cmd = "pass show Google | head -n 1"
+
+smtp-host = "smtp.gmail.com"
+smtp-port = 465
+# smtp-login = ""
+smtp-passwd-cmd = "pass show Google | head -n 1"
