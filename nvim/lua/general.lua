@@ -1,15 +1,11 @@
-local g = vim.g
-local o = vim.o
-local bo = vim.bo
+vim.g.mapleader = ' '
 
-g.mapleader = ' '
+vim.o.tabstop = 4
+vim.o.softtabstop = 4
+vim.o.shiftwidth = 4
+vim.o.expandtab = true
 
-o.tabstop = 4
-o.softtabstop = 4
-o.shiftwidth = 4
-o.expandtab = true
+vim.o.scrolloff = 3
+vim.o.showmatch = true
 
-o.scrolloff = 3
-o.showmatch = true
-
-bo.undofile = true
+vim.bo.undofile = true

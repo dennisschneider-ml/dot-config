@@ -1,9 +1,8 @@
-local opt = vim.opt
-
--- nvim autoenables incsearch, hlsearch
+--[[ nvim autoenables incsearch, hlsearch
+--]]
 
 -- Enable use of mouse in all vim-modes
-opt.mouse = 'a'
+vim.opt.mouse = 'a'
 
 -- window-split navigation
 vim.keymap.set('n', '<C-H>', '<C-W>h', expr_opts)
