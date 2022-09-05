@@ -12,7 +12,12 @@ return require('packer').startup(function()
     use 'tpope/vim-fugitive'
 
     -- himalaya mail-client
-    use '~/.local/share/himalaya/vim'
+    -- Due to a bug from packer, the default installation from 'soywod/himalaya' does not work
+    -- In order to still get an updated Himalaya-plugin and make it usable, you have to first install it from github
+    -- And then load it locally from your nvim-packer directory.
+    ---- Note the /path/to/himalaya/vim
+    use 'soywod/himalaya'
+    use '~/.local/share/nvim/site/pack/packer/start/himalaya/vim'
 
     -- coc
     use {'neoclide/coc.nvim', branch='release'}
