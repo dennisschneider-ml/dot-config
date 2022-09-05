@@ -1,0 +1,40 @@
+#!/bin/sh
+
+
+# Deactivate creation of python_history
+export PYTHONSTARTUP=~/.config/python/pythonrc
+
+export PATH="$PATH":~/.local/bin
+unsetopt PROMPT_SP
+
+# Default programs
+export EDITOR="nvim"
+export TERMINAL="alacritty"
+export BROWSER="qutebrowser"
+
+# Home cleanup
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_DATA_HOME=$HOME/.local/share
+export XDG_CACHE_HOME=$HOME/.cache
+export XINITRC=$XDG_CONFIG_HOME/x11/xinitrc
+export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
+export INPUTRC=$XDG_CONFIG_HOME/shell/inputrc
+export ZDOTDIR=$XDG_CONFIG_HOME/zsh
+export DOORDIR=$XDG_CONFIG_HOME/doom
+export DOCKER_CONFIG=$XDG_CONFIG_HOME/docker
+# deactivate creation of less-histfile
+export LESSHISTFILE=-
+export PASSWORD_STORE_DIR=$XDG_DATA_HOME/password-store
+export GNUPGHOME=$XDG_DATA_HOME/gnupg
+
+# Own scripts-directory
+export PYNNACLE_DATA=$XDG_DATA_HOME/pynnacle
+
+
+EXA_FLAGS="--icons --group-directories-first"
+
+if [ -z "${DISPLAY}" ]; then
+    # use custom-placed xinitrc, so it does not clutter the home-dir
+	exec startx $XINITRC
+fi
+
