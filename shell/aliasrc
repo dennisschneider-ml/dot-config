@@ -34,11 +34,15 @@ alias \
 	t5="clear; exa --tree -L5" \
 	t6="clear; exa --tree -L6" \
 
-# Own sciptings
-# Cache cd-usages
-alias cd='pushd 1> /dev/null'
-# Traverse cd-usages back in time
-alias u='popd 1> /dev/null'
+# Make aliasrc POSIX-compliant. Only load if command exists for this shell
+if command -v pushd &> /dev/null
+then
+    # Own sciptings
+    # Cache cd-usages
+    alias cd='pushd 1> /dev/null'
+    # Traverse cd-usages back in time
+    alias u='popd 1> /dev/null'
+fi
 # Download music from YouTube
 alias music-dl="youtube-dl -x --audio-format opus --audio-quality 0 --prefer-ffmpeg"
 # List available wifi-networks
