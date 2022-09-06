@@ -42,4 +42,6 @@ source $ZDOTDIR/aliasrc.zsh
 source $ZDOTDIR/p10k.zsh
 source $XDG_DATA_HOME/powerlevel10k/powerlevel10k.zsh-theme
 
+source /usr/share/fzf/completion.zsh
+source /usr/share/fzf/key-bindings.zsh
 
