@@ -20,19 +20,19 @@ alias \
 	e="emacs" \
 	c="clear" \
 	v="$EDITOR" \
-	l="exa -lah" \
+	l="exa -lah --no-filesize --git" \
 	..="cd .." \
 	...="cd ../.." \
 	....="cd ../../.." \
 	.....="cd ../../../.." \
 	......="cd ../../../../.." \
-	t="clear; exa --tree" \
-	t1="clear; exa --tree -L1" \
-	t2="clear; exa --tree -L2" \
-	t3="clear; exa --tree -L3" \
-	t4="clear; exa --tree -L4" \
-	t5="clear; exa --tree -L5" \
-	t6="clear; exa --tree -L6" \
+	t="clear; exa --tree --icons" \
+	t1="clear; exa --tree -L1 --icons" \
+	t2="clear; exa --tree -L2 --icons" \
+	t3="clear; exa --tree -L3 --icons" \
+	t4="clear; exa --tree -L4 --icons" \
+	t5="clear; exa --tree -L5 --icons" \
+	t6="clear; exa --tree -L6 --icons" \
 
 # Make aliasrc POSIX-compliant. Only load if command exists for this shell
 if command -v pushd &> /dev/null
