@@ -13,6 +13,8 @@ function bool(number)
     return number == 1
 end
 
+-- 'coc#vim#visible' ensures the mapping being plugin-local
+--
 -- Use <Ctrl-J> and <Ctrl-K> to navigate the completion list
 -- 	"in insert mode", "on Ctrl-J", "if visible, next(), else Ctrl-J"
 vim.keymap.set(
