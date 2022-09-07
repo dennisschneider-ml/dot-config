@@ -1,0 +1,15 @@
+[Default Applications]
+
+# Default applications to open for most command-line tools
+# These settings will be used by xdg-open for the given filetypes
+# The .desktop files are located in ``~/.local/share/applications``
+
+text/plain=text.desktop
+application/json=text.desktop
+application/pdf=pdf.desktop
+image/png=image.desktop
+image/jpg=image.desktop
+image/jpeg=image.desktop
+image/gif=image.desktop
+x-scheme-handler/mailto=mail.desktop
+inode/directory=file.desktop
