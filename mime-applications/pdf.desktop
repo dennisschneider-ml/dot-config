@@ -1,1 +1,4 @@
-/home/dns/.local/share/applications/pdf.desktop
+[Desktop Entry]
+Type=Application
+Name=PDF Reader
+Exec=zathura %u

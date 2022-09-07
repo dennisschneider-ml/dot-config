@@ -1,1 +1,4 @@
-/home/dns/.local/share/applications/text.desktop
+[Desktop Entry]
+Type=Application
+Name=Text Editor
+Exec=alacritty -e nvim %f

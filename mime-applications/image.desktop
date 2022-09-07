@@ -1,1 +1,4 @@
-/home/dns/.local/share/applications/image.desktop
+[Desktop Entry]
+Type=Application
+Name=Image Viewer
+Exec=sxiv -a %f
