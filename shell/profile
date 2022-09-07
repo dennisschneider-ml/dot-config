@@ -8,9 +8,9 @@ export PATH="$PATH":~/.local/bin
 unsetopt PROMPT_SP
 
 # Default programs
-export EDITOR="nvim"
-export TERMINAL="alacritty"
-export BROWSER="qutebrowser"
+export EDITOR="/usr/bin/nvim"
+export TERMINAL="/usr/bin/alacritty"
+export BROWSER="/usr/bin/qutebrowser"
 
 # Home cleanup
 export XDG_CONFIG_HOME=$HOME/.config
@@ -33,6 +33,9 @@ export PYNNACLE_DATA=$XDG_DATA_HOME/pynnacle
 
 # Application-specific configurations
 export FZF_COMPLETION_TRIGGER=,,
+# NNN is only configured through ENV-vars, so these are bundles accordingly
+source $XDG_CONFIG_HOME/nnn/config.nnn
+
 
 if [ -z "${DISPLAY}" ]; then
     # use custom-placed xinitrc, so it does not clutter the home-dir
