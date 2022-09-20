@@ -1,4 +1,4 @@
 [Desktop Entry]
 Type=Application
 Name=Image Viewer
-Exec=sxiv -a %f
+Exec=devour sxiv -a %f

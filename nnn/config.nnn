@@ -1,6 +1,5 @@
 #!/bin/sh
 
-export NNN_OPTS='HJne'
-export NNN_OPENER=nuke
+export NNN_OPTS='' # 'AHe'
 export NNN_PLUG='f:finder;o:fzopen;d:diffs'
 export NNN_FIFO='/tmp/nnn.fifo'
