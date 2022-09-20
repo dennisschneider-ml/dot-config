@@ -33,6 +33,8 @@ alias \
 	t4="clear; exa --tree -L4 --icons" \
 	t5="clear; exa --tree -L5 --icons" \
 	t6="clear; exa --tree -L6 --icons" \
+    open="xdg-open" \
+    claws-mail="claws-mail --alternate-config-dir $XDG_CONFIG_HOME/claws-mail"
 
 # Make aliasrc POSIX-compliant. Only load if command exists for this shell
 if command -v pushd &> /dev/null
