@@ -15,8 +15,6 @@ autoload -Uz compinit
 compinit -d $XDG_CACHE_HOME/zsh/zcompdump
 HISTFILE=$XDG_CACHE_HOME/shell/histfile
 
-eval "$(zoxide init zsh)"
-
 # fzf-integration in completion-selection menu
 [ ! -f $XDG_DATA_HOME/fzf-tab/fzf-tab.plugin.zsh ] || source $XDG_DATA_HOME/fzf-tab/fzf-tab.plugin.zsh
 
