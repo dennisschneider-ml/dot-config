@@ -1,7 +1,6 @@
 #!/bin/sh
 
 # Restart nitrogen with previously used wallpaper/configurations
-nitrogen --restore &
 dunst &
 unclutter &
 exec picom &
