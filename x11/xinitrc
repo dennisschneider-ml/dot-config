@@ -3,7 +3,7 @@
 # Restart nitrogen with previously used wallpaper/configurations
 dunst &
 unclutter &
-exec picom &
+picom -b
 # Start program to notify on changing home-directory
 sh $XDG_DATA_HOME/pynnacle/watch-home.sh
 
