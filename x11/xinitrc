@@ -1,6 +1,7 @@
 #!/bin/sh
 
 # Restart nitrogen with previously used wallpaper/configurations
+xwallpaper --zoom ~/Pictures/wallpapers/archcraft/archcraft-backgrounds-extra/files/extra-11.jpg
 dunst &
 unclutter &
 picom -b
