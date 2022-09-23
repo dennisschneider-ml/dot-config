@@ -1,0 +1,12 @@
+# Output German Umlaute after predecing with <PrSc>.
+# /etc/X11/xorg.conf.d/00-keyboard.conf
+# >> Option "XkbOptions" "compose:prsc"
+
+<Multi_key> <a> : adiaeresis
+<Multi_key> <A> : Adiaeresis
+<Multi_key> <o> : odiaeresis
+<Multi_key> <O> : Odiaeresis
+<Multi_key> <u> : udiaeresis
+<Multi_key> <U> : Udiaeresis
+<Multi_key> <s> : ssharp
+
