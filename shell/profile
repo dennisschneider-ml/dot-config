@@ -39,8 +39,8 @@ export FZF_COMPLETION_TRIGGER=,,
 source $XDG_CONFIG_HOME/nnn/config.nnn
 
 
-if [ -z "${DISPLAY}" ]; then
+#if [ -z "${DISPLAY}" ]; then
     # use custom-placed xinitrc, so it does not clutter the home-dir
-	exec startx $XINITRC
-fi
+#	exec startx $XINITRC
+#fi
 
