@@ -47,4 +47,10 @@ return require('packer').startup(function()
     -- colorscheme
     use 'arcticicestudio/nord-vim'
 
+    -- markdown preview
+    use({
+        "iamcco/markdown-preview.nvim",
+        run = function() vim.fn["mkdp#util#install"]() end,
+    })
+
 end)
