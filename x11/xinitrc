@@ -4,7 +4,7 @@
 xwallpaper --zoom ~/Pictures/wallpapers/archcraft/archcraft-backgrounds-extra/files/extra-11.jpg
 dunst &
 unclutter &
-picom -b
+picom -b --experimental-backends
 # Start program to notify on changing home-directory
 sh $XDG_DATA_HOME/pynnacle/watch-home.sh
 
