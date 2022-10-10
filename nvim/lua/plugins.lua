@@ -40,9 +40,14 @@ return require('packer').startup(function()
     use 'arcticicestudio/nord-vim'
 
     -- markdown preview
-    use({
-        "iamcco/markdown-preview.nvim",
+    use {'iamcco/markdown-preview.nvim',
         run = function() vim.fn["mkdp#util#install"]() end,
-    })
+    }
+
+    -- Latex plugin
+    use {
+        'lervag/vimtex',
+    }
 
 end)
+
