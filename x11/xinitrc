@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Load Xresources-file in custom location
+xrdb -I$XDG_CONFIG_HOME/x11 $XDG_CONFIG/HOME/x11/Xresources
+
 # Restart nitrogen with previously used wallpaper/configurations
 xwallpaper --zoom ~/Pictures/wallpapers/archcraft/archcraft-backgrounds-extra/files/extra-11.jpg
 dunst &
