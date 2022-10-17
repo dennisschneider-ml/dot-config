@@ -38,6 +38,6 @@ color() {
 #nord14
 #nord9
 while :; do
-    echo "$(wifi) | $(cpu_temp) | $(battery) | $(mem) |"
+    echo "$(wifi) | $(battery) | $(cpu_temp) | $(mem) |"
     sleep 1
 done
