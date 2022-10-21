@@ -22,7 +22,7 @@ battery() {
 }
 
 cpu_temp() {
-    TEMP=$(sensors | awk '/CPU/{print $2}')
+    TEMP=$(sensors | awk '/CPU/{print substr($2,2)}')
     echo "CPU: $TEMP"
 }
 
