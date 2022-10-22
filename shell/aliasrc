@@ -48,7 +48,7 @@ fi
 # Download music from YouTube
 alias music-dl="youtube-dl -x --audio-format opus --audio-quality 0 --prefer-ffmpeg"
 # List available wifi-networks
-alias net-list="iwctl station wlan0 scan && iwctl station wlan0 get-networks"
+alias net-list="nmcli device wifi list"
 # Connect to wifi-network with given SSID
-alias net-connect="iwctl station wlan0 connect"
+alias net-connect="nmcli device wifi connect --ask"
 
