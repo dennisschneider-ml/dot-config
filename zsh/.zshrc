@@ -34,10 +34,10 @@ setopt histignorealldups
 setopt extendedglob
 # Turn off beep-sound on errors
 unsetopt beep
-bindkey -v
 
 # Zsh-specific aliasrc
 source $ZDOTDIR/aliasrc.zsh
+source $ZDOTDIR/inputrc.zsh
 # Colortheme
 eval "$(starship init zsh)"
 
