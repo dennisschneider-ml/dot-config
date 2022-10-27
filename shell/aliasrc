@@ -52,3 +52,4 @@ alias net-list="nmcli device wifi list"
 # Connect to wifi-network with given SSID
 alias net-connect="nmcli device wifi connect --ask"
 
+alias eduroam-connect='sudo wpa_supplicant -i wlan0 -c /etc/wpa_supplicant/eduroam.conf -B'
