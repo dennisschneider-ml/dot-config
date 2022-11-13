@@ -55,3 +55,5 @@ alias net-connect="nmcli device wifi connect --ask"
 alias eduroam-connect='sudo wpa_supplicant -i wlan0 -c /etc/wpa_supplicant/eduroam.conf -B'
 
 alias print='sudo systemctl start cups; lp -d ts5000'
+# There is no reason, why the printing-deamon should run all the time.
+alias print-end='sudo systemctl stop cups'
