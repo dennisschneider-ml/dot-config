@@ -5,6 +5,7 @@
 # The .desktop files are located in ``~/.local/share/applications``
 
 text/plain=text.desktop
+text/html=web-browser.desktop
 application/json=text.desktop
 application/pdf=pdf.desktop
 image/png=image.desktop
@@ -12,4 +13,5 @@ image/jpg=image.desktop
 image/jpeg=image.desktop
 image/gif=image.desktop
 x-scheme-handler/mailto=mail.desktop
+x-scheme-handler/http=web-browser.desktop
 inode/directory=file.desktop
