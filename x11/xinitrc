@@ -3,11 +3,16 @@
 # Load Xresources-file in custom location
 xrdb -I$XDG_CONFIG_HOME/x11 $XDG_CONFIG/HOME/x11/Xresources
 
-# Restart nitrogen with previously used wallpaper/configurations
-xwallpaper --zoom ~/Pictures/wallpapers/archcraft/archcraft-backgrounds-extra/files/extra-11.jpg
+# Set certain Wallpaper
+xwallpaper --zoom ~/Pictures/wallpapers/torii.png
+
+# Set random lockscreen
+# Move to background since this command takes a little while
+betterlockscreen -u ~/Pictures/wallpapers &
+
 dunst &
 unclutter &
-picom -b --experimental-backends
+picom -b
 # Start program to notify on changing home-directory
 sh $XDG_DATA_HOME/pynnacle/watch-home.sh
 
