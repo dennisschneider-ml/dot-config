@@ -1,8 +1,3 @@
--- Open MarkdownPreview on Markdown files
-vim.api.nvim_create_autocmd(
-    { "BufNewFile", "BufRead" },
-    { 
-        pattern = "*.md", 
-        command = ":MarkdownPreview",
-    }
-)
+vim.g.mkdp_auto_start = 1
+vim.g.mkdp_theme = 'light'
+
