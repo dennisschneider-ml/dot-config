@@ -8,7 +8,7 @@ xwallpaper --zoom ~/Pictures/wallpapers/torii.png
 
 # Set random lockscreen
 # Move to background since this command takes a little while
-betterlockscreen -u ~/Pictures/wallpapers &
+betterlockscreen -u ~/Pictures/wallpapers/lockscreens &
 
 dunst &
 unclutter &
