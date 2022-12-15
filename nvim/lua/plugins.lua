@@ -19,6 +19,9 @@ return require('packer').startup(function()
         requires = {'nvim-lua/plenary.nvim'}
     }
 
+    -- auto-generate bracket-pairs
+    use 'windwp/nvim-autopairs'
+
     -- treesitter
     use 'nvim-treesitter/nvim-treesitter'
 
