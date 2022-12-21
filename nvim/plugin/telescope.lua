@@ -1,6 +1,7 @@
-actions = require('telescope.actions')
+local actions = require('telescope.actions')
+local telescope = require('telescope')
 
-require('telescope').setup({
+telescope.setup({
     defaults = {
         -- Plugin-local mappings
         mappings = {
@@ -30,19 +31,40 @@ require('telescope').setup({
             theme = 'ivy',
         },
     },
+    extensions = {
+        repo = {
+            list = {
+                fd_opts = {
+                    "--no-ignore-vcs",
+                },
+                search_dirs = {
+                    "~/Documents/dev",
+                    "~/.config"
+                },
+            },
+        },
+    }
 })
 
-local telescope = require('telescope.builtin')
+telescope.load_extension('fzf')
+-- telescope.load_extension('zoxide')
+telescope.load_extension('repo')
+telescope.load_extension('neoclip')
+
+local builtin = require('telescope.builtin')
 local expr_opts = { noremap = true, silent = true }
 
 -- Choose from all telescope-options
-vim.keymap.set('n', '<leader>fa', telescope.builtin, expr_opts)
+vim.keymap.set('n', '<leader>fa', builtin.builtin, expr_opts)
+
+-- Search repos
+vim.keymap.set('n', '<leader>fr', telescope.extensions.repo.list, expr_opts)
 
 -- Search through git commits
-vim.keymap.set('n', '<leader>fc', telescope.git_commits, expr_opts)
+vim.keymap.set('n', '<leader>fc', builtin.git_commits, expr_opts)
 
 -- Search through files in cwd
-vim.keymap.set('n', '<leader>ff', telescope.find_files, expr_opts)
+vim.keymap.set('n', '<leader>ff', builtin.find_files, expr_opts)
 
 -- Grep from files recursively in cwd
-vim.keymap.set('n', '<leader>fg', telescope.live_grep, expr_opts)
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, expr_opts)

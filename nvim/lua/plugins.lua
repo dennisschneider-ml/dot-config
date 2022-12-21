@@ -14,9 +14,16 @@ return require('packer').startup(function()
     -- coc
     use {'neoclide/coc.nvim', branch='release'}
 
+    -- fzf
     -- telescope
+    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
+    use 'AckslD/nvim-neoclip.lua'
+    use 'cljoly/telescope-repo.nvim'
+    -- use 'nanotee/zoxide.vim'
     use {'nvim-telescope/telescope.nvim',
-        requires = {'nvim-lua/plenary.nvim'}
+        requires = {
+            'nvim-lua/plenary.nvim'
+        }
     }
 
     -- auto-generate bracket-pairs
@@ -51,6 +58,20 @@ return require('packer').startup(function()
     use {
         'lervag/vimtex',
     }
+
+
+    ---- EXPERIMENTAL
+    -- bufferline
+    use {'akinsho/bufferline.nvim', tag='v3.*', requires='nvim-tree/nvim-web-devicons'}
+
+    use {'lewis6991/gitsigns.nvim', tag = 'release'}
+
+    use {'lewis6991/impatient.nvim'}
+
+    use {'akinsho/toggleterm.nvim'}
+
+    -- use 'agmedkhalf/project.nvim'
+    
 
 end)
 
