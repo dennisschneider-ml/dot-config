@@ -17,9 +17,7 @@ alias \
 
 # Abbreviations
 alias \
-	e="emacs" \
 	c="clear" \
-	v="$EDITOR" \
 	l="exa -lah --no-filesize --git" \
 	..="cd .." \
 	...="cd ../.." \
@@ -57,3 +55,15 @@ alias eduroam-connect='sudo systemctl stop NetworkManager; sudo killall wpa_supp
 alias print='sudo systemctl start cups; lp -d ts5000'
 # There is no reason, why the printing-deamon should run all the time.
 alias print-end='sudo systemctl stop cups'
+
+# Fuzzy Find
+alias fzf="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'"
+
+function fuzzy_nvim_start {
+    if [ "$#" -eq 0 ]; then
+        nvim +'Telescope find_files hidden=true layout_config={height=0.9}'
+    else
+        nvim $@
+    fi
+}
+alias v='fuzzy_nvim_start'
