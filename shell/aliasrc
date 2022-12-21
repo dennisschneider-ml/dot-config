@@ -67,3 +67,12 @@ function fuzzy_nvim_start {
     fi
 }
 alias v='fuzzy_nvim_start'
+
+## git
+alias gs='git status --short'
+alias gd='git diff'
+alias ga='git add'
+alias gc='git commit'
+alias gp='git pull'
+alias gpp='git push'
+
