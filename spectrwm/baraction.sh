@@ -6,6 +6,14 @@ wifi() {
     echo "$WIFI"
 }
 
+sound_device() {
+    SOUND=$(pactl list | grep -m 1 device.alias)
+    if [[ $SOUND ]]; then
+        SOUND_ICON=''
+    fi
+    echo "$SOUND_ICON"
+}
+
 mail() {
     NEW_MAIL=$(claws-mail --status | head -1 | awk '{print $1}')
     echo "Mail: $NEW_MAIL"
@@ -32,12 +40,9 @@ color() {
     echo "+@fg=$(($color_id)) $text +@fg=0;"
 }
 
-#nord4
-#nord1
-#nord11
-#nord14
-#nord9
 while :; do
+    sound=$(sound_device)
+    echo -n "$sound    "
     echo "$(wifi) | $(battery) | $(cpu_temp) | $(mem) |"
     sleep 1
 done
