@@ -32,17 +32,19 @@ alias \
 	t5="t -L5" \
 	t6="t -L6" \
     open="xdg-open" \
-    claws-mail="claws-mail --alternate-config-dir $XDG_CONFIG_HOME/claws-mail"
+    claws-mail="claws-mail --alternate-config-dir $XDG_CONFIG_HOME/claws-mail" \
+    nb="newsboat"
 
 # Make aliasrc POSIX-compliant. Only load if command exists for this shell
-if command -v pushd &> /dev/null
-then
-    # Own sciptings
-    # Cache cd-usages
-    alias cd='pushd 1> /dev/null'
-    # Traverse cd-usages back in time
-    alias u='popd 1> /dev/null'
-fi
+#if command -v pushd &> /dev/null
+#then
+#    # Own sciptings
+#    # Cache cd-usages
+#    alias cd='pushd 1> /dev/null'
+#    # Traverse cd-usages back in time
+#    alias u='popd 1> /dev/null'
+#fi
+alias cd='z'
 # Download music from YouTube
 alias music-dl="youtube-dl -x --audio-format opus --audio-quality 0 --prefer-ffmpeg"
 # List available wifi-networks
