@@ -35,6 +35,7 @@ export PYNNACLE_DATA=$XDG_DATA_HOME/pynnacle
 
 # Application-specific configurations
 export FZF_COMPLETION_TRIGGER=,,
+export FZF_COMPLETION_OPTS='--hidden --exclude ".git" --preview="bat"'
 # NNN is only configured through ENV-vars, so these are bundles accordingly
 source $XDG_CONFIG_HOME/nnn/config.nnn
 
