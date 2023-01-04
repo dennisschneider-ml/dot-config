@@ -1,10 +1,11 @@
 require('bufferline').setup{
     options = {
+        mode = 'tabs',
         diagnostics = 'coc',
-        always_show_bufferline = false,
+        always_show_bufferline = true,
         offsets = {
             {
-                filetype = "NvimTree", text = "", padidng = 1
+                filetype = "NvimTree", text = "", padding = 1
             }
         },
         separator_style = "thin", 
