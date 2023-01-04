@@ -6,6 +6,7 @@ vim.g.coc_global_extensions = {
     'coc-vimtex', -- latex language-support
 	'coc-fzf-preview', -- fzf-integration in coc
 	'coc-prettier',
+    'coc-sh',
 }
 
 -- I miss python!!!
@@ -22,38 +23,25 @@ vim.keymap.set(
     '<C-J>', 
     function()
         if bool(vim.call('coc#pum#visible')) then
-            vim.call('coc#pum#next', 1)
+            return vim.call('coc#pum#next', 1)
         elseif bool(vim.call('coc#jumpable')) then
             return '<C-R>=coc#rpc#request("snippetNext", [])<CR>'
         else
             return '<C-J>'
         end
-    end
-    , expr_opts)
+    end,
+    expr_opts)
 
 vim.keymap.set(
     'i', 
     '<C-K>',
     function()
         if bool(vim.call('coc#pum#visible')) then
-            vim.call('coc#pum#prev', 1)
+            return vim.call('coc#pum#prev', 1)
         elseif bool(vim.call('coc#jumpable')) then
             return '<C-R>=coc#rpc#request("snippetPrev", [])<CR>'
         else
             return '<C-K>'
-        end
-    end
-    , expr_opts)
-
--- Select first item by default
-vim.keymap.set(
-    'i',
-    '<CR>',
-    function()
-        if bool(vim.call('coc#pum#visible')) then
-            vim.call('coc#pum#confirm')
-        else
-            return '<C-G>u<CR><C-R>=coc#on_enter()<CR>'
         end
     end,
     expr_opts)
