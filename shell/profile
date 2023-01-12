@@ -4,7 +4,7 @@
 # Deactivate creation of python_history
 export PYTHONSTARTUP=~/.config/python/pythonrc
 
-export PATH="$PATH":~/.local/bin
+export PATH="$PATH":~/.local/bin:~/.local/share/cargo/bin
 unsetopt PROMPT_SP
 
 # Default programs
@@ -28,6 +28,8 @@ export LESSHISTFILE=-
 export PASSWORD_STORE_DIR=$XDG_DATA_HOME/password-store
 export GNUPGHOME=$XDG_DATA_HOME/gnupg
 export STARSHIP_CONFIG=$XDG_CONFIG_HOME/zsh/starship/starship.toml
+export RUSTUP_HOME=$XDG_DATA_HOME/rustup
+export CARGO_HOME=$XDG_DATA_HOME/cargo
 
 # Own scripts-directory
 export PYNNACLE_DATA=$XDG_DATA_HOME/pynnacle
@@ -38,6 +40,7 @@ export FZF_COMPLETION_TRIGGER=,,
 export FZF_COMPLETION_OPTS='--hidden --exclude ".git" --preview="bat"'
 # NNN is only configured through ENV-vars, so these are bundles accordingly
 source $XDG_CONFIG_HOME/nnn/config.nnn
+export LS_COLORS="$(vivid generate everforest)"
 
 
 if [ -z "${DISPLAY}" ]; then
