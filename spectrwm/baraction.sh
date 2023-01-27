@@ -6,14 +6,6 @@ wifi() {
     echo "$WIFI"
 }
 
-sound_device() {
-    SOUND=$(pactl list | grep -m 1 device.alias)
-    if [[ $SOUND ]]; then
-        SOUND_ICON=''
-    fi
-    echo "$SOUND_ICON"
-}
-
 mail() {
     NEW_MAIL=$(claws-mail --status | head -1 | awk '{print $1}')
     echo "Mail: $NEW_MAIL"
@@ -34,15 +26,23 @@ cpu_temp() {
     echo "CPU: $TEMP"
 }
 
-color() {
-    color_id=$1
-    text=${@:2}
-    echo "+@fg=$(($color_id)) $text +@fg=0;"
+sound_device() {
+    SOUND=$(pactl list | grep -m 1 device.alias)
+    if [[ $SOUND ]]; then
+        SOUND_ICON=''
+    fi
+    echo "$SOUND_ICON"
+}
+
+minimized() {
+    current_workspace=$(xdotool get_desktop)
+    num_minimized=$(awk -v wks=$current_workspace -F ';' '$3~wks{print $1}' $PYNNACLE_DATA/minimized_programs.txt | wc -l)
+    if [[ $num_minimized != 0 ]]; then
+        echo "~$num_minimized"
+    fi
 }
 
 while :; do
-    sound=$(sound_device)
-    echo -n "$sound    "
-    echo "$(wifi) | $(battery) | $(cpu_temp) | $(mem) |"
+    echo "$(sound_device)        $(wifi) | $(battery) | $(cpu_temp) | $(mem) |"
     sleep 1
 done
