@@ -7,7 +7,7 @@ alias \
 	mv="mv -iv" \
 	rm="rm -vI" \
 	mkd="mkdir -pv" \
-	cat="bat --plain --theme Nord "
+	cat="bat --plain --theme gruvbox-dark "
 
 # Colorize commands when possible
 alias \
@@ -24,7 +24,7 @@ alias \
 	....="cd ../../.." \
 	.....="cd ../../../.." \
 	......="cd ../../../../.." \
-	t="clear; exa --tree --icons" \
+	tree="clear; exa --tree --icons" \
 	t1="t -L1" \
 	t2="t -L2" \
 	t3="t -L3" \
@@ -79,4 +79,6 @@ alias ga='git add'
 alias gc='git commit'
 alias gp='git pull'
 alias gpp='git push'
+
+alias mn='nvim+"Telescope man_pages layout_config={height=0.9}"'
 
