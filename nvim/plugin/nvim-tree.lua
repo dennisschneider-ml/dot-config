@@ -7,7 +7,8 @@ nvimtree.setup({
         adaptive_size = true,
         mappings = {
             list = {
-                {key = 'u', action = 'dir_up'},
+                {key = 'h', action = 'dir_up'},
+                {key = 'l', action = 'open'},
             },
         },
     },
