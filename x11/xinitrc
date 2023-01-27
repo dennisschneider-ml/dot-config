@@ -4,7 +4,7 @@
 xrdb -I$XDG_CONFIG_HOME/x11 $XDG_CONFIG/HOME/x11/Xresources
 
 # Set certain Wallpaper
-xwallpaper --zoom ~/Pictures/wallpapers/torii.png
+xwallpaper --zoom ~/Pictures/wallpapers/archcraft/archcraft-backgrounds/files/forest.jpg
 
 # Set random lockscreen
 # Move to background since this command takes a little while
