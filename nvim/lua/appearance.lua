@@ -10,4 +10,4 @@ vim.o.splitright = true
 vim.o.signcolumn = "yes"
 vim.o.fillchars = 'eob: '
 
-vim.cmd([[colorscheme nord]])
+vim.cmd([[colorscheme everforest]])
