@@ -19,7 +19,7 @@ return require('packer').startup(function()
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
     use 'AckslD/nvim-neoclip.lua'
     use 'cljoly/telescope-repo.nvim'
-    -- use 'nanotee/zoxide.vim'
+    use 'nanotee/zoxide.vim'
     use {'nvim-telescope/telescope.nvim',
         requires = {
             'nvim-lua/plenary.nvim'
@@ -42,12 +42,10 @@ return require('packer').startup(function()
     use 'folke/twilight.nvim'
 
     -- lualine
-    use {'nvim-lualine/lualine.nvim', 
-        requires = {'kyazdani42/nvim-web-devicons', opt = true}
-    }
+    use {'nvim-lualine/lualine.nvim', requires = {'kyazdani42/nvim-web-devicons', opt = true}}
 
     -- colorscheme
-    use 'arcticicestudio/nord-vim'
+    use 'sainnhe/everforest'
 
     -- markdown preview
     use {'iamcco/markdown-preview.nvim',
@@ -59,6 +57,10 @@ return require('packer').startup(function()
         'lervag/vimtex',
     }
 
+    -- Show colors
+    use {
+        'norcalli/nvim-colorizer.lua',
+    }
 
     ---- EXPERIMENTAL
     -- bufferline
@@ -69,9 +71,6 @@ return require('packer').startup(function()
     use {'lewis6991/impatient.nvim'}
 
     use {'akinsho/toggleterm.nvim'}
-
-    -- use 'agmedkhalf/project.nvim'
-    
 
 end)
 
