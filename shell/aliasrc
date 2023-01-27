@@ -44,7 +44,9 @@ alias \
 #    # Traverse cd-usages back in time
 #    alias u='popd 1> /dev/null'
 #fi
+
 alias cd='z'
+alias u='z -'
 # Download music from YouTube
 alias music-dl="youtube-dl -x --audio-format opus --audio-quality 0 --prefer-ffmpeg"
 # List available wifi-networks

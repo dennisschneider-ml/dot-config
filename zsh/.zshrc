@@ -15,12 +15,19 @@ autoload -Uz compinit
 compinit -d $XDG_CACHE_HOME/zsh/zcompdump
 HISTFILE=$XDG_CACHE_HOME/shell/histfile
 
+####################################################################################
+# PLUGINS
+####################################################################################
+
 # fzf-integration in completion-selection menu
 [ ! -f $XDG_DATA_HOME/fzf-tab/fzf-tab.plugin.zsh ] || source $XDG_DATA_HOME/fzf-tab/fzf-tab.plugin.zsh
 
 # Autosuggestions (fish-like)
 [ ! -f $XDG_DATA_HOME/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh ] || source $XDG_DATA_HOME/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+
+####################################################################################
+
 
 # History-size
 HISTSIZE=1000000
@@ -40,7 +47,14 @@ source $ZDOTDIR/aliasrc.zsh
 source $ZDOTDIR/inputrc.zsh
 # Colortheme
 eval "$(starship init zsh)"
+# zoxide
+eval "$(zoxide init zsh)"
 
 source /usr/share/fzf/completion.zsh
 source /usr/share/fzf/key-bindings.zsh
 
+
+function set_win_title() {
+    echo -ne "\033]0; Alacritty: $(basename "$PWD") \007"
+}
+precmd_functions+=(set_win_title)
