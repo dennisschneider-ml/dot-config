@@ -1,76 +1,100 @@
-return require('packer').startup(function()
-    -- packer can manage itself
-    use 'wbthomason/packer.nvim'
+-- Bootstrap lazy
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+    vim.fn.system({
+        "git", "clone",
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable", -- latest stable release
+        lazypath
+    })
+end
+vim.opt.rtp:prepend(lazypath)
 
+require("lazy").setup({
     -- vim-surround
-    use 'tpope/vim-surround'
+    'tpope/vim-surround',
 
     -- vim-commentary
-    use 'tpope/vim-commentary'
+    'tpope/vim-commentary',
 
     -- git
-    use 'tpope/vim-fugitive'
+    'tpope/vim-fugitive',
 
     -- coc
-    use {'neoclide/coc.nvim', branch='release'}
+    {'neoclide/coc.nvim', 
+        branch='release'
+    },
 
     -- fzf
     -- telescope
-    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
-    use 'AckslD/nvim-neoclip.lua'
-    use 'cljoly/telescope-repo.nvim'
-    use 'nanotee/zoxide.vim'
-    use {'nvim-telescope/telescope.nvim',
-        requires = {
+    {'nvim-telescope/telescope-fzf-native.nvim', 
+        build='make'
+    },
+    'AckslD/nvim-neoclip.lua',
+    'cljoly/telescope-repo.nvim',
+    'nanotee/zoxide.vim',
+    {'nvim-telescope/telescope.nvim',
+        dependencies={
             'nvim-lua/plenary.nvim'
-        }
-    }
+        },
+    },
 
     -- auto-generate bracket-pairs
-    use 'windwp/nvim-autopairs'
+    'windwp/nvim-autopairs',
 
     -- treesitter
-    use 'nvim-treesitter/nvim-treesitter'
+    'nvim-treesitter/nvim-treesitter',
 
     -- nerdtree-alternative (not maintained anymore)
-    use {'kyazdani42/nvim-tree.lua', requires = {'kyazdani42/nvim-web-devicons'}, tag = 'nightly'}
+    {'kyazdani42/nvim-tree.lua', 
+        dependencies={
+            'kyazdani42/nvim-web-devicons'
+        }, 
+        version='nightly'
+    },
 
     -- goyo-alternative
-    use 'pocco81/true-zen.nvim'
+    'pocco81/true-zen.nvim',
 
     -- dim inactive portions of code
-    use 'folke/twilight.nvim'
+    'folke/twilight.nvim',
 
     -- lualine
-    use {'nvim-lualine/lualine.nvim', requires = {'kyazdani42/nvim-web-devicons', opt = true}}
+    {'nvim-lualine/lualine.nvim', 
+        dependencies={
+            'kyazdani42/nvim-web-devicons' 
+        }
+    },
 
     -- colorscheme
-    use 'sainnhe/everforest'
+    {'sainnhe/everforest', 
+        priority=1000,
+        config=function()
+            vim.cmd([[colorscheme everforest]])
+        end,
+    },
 
     -- markdown preview
-    use {'iamcco/markdown-preview.nvim',
+    {'iamcco/markdown-preview.nvim',
         run = function() vim.fn["mkdp#util#install"]() end,
-    }
+    },
 
     -- Latex plugin
-    use {
-        'lervag/vimtex',
-    }
+    'lervag/vimtex',
 
     -- Show colors
-    use {
-        'norcalli/nvim-colorizer.lua',
-    }
+    'norcalli/nvim-colorizer.lua',
 
     ---- EXPERIMENTAL
     -- bufferline
-    use {'akinsho/bufferline.nvim', tag='v3.*', requires='nvim-tree/nvim-web-devicons'}
+    {'akinsho/bufferline.nvim', 
+        version='v3.*', 
+    },
 
-    use {'lewis6991/gitsigns.nvim', tag = 'release'}
+    'lewis6991/gitsigns.nvim', 
 
-    use {'lewis6991/impatient.nvim'}
+    'lewis6991/impatient.nvim',
 
-    use {'akinsho/toggleterm.nvim'}
-
-end)
-
+    'akinsho/toggleterm.nvim',
+})
