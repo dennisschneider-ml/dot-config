@@ -24,7 +24,7 @@ alias \
 	....="cd ../../.." \
 	.....="cd ../../../.." \
 	......="cd ../../../../.." \
-	tree="clear; exa --tree --icons" \
+	t="exa --tree --icons" \
 	t1="t -L1" \
 	t2="t -L2" \
 	t3="t -L3" \
