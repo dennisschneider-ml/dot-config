@@ -1,20 +1,22 @@
 #!/bin/sh
 
-# Load Xresources-file in custom location
+# Load Xresources-file in custom location.
 xrdb -I$XDG_CONFIG_HOME/x11 $XDG_CONFIG/HOME/x11/Xresources
 
-# Set certain Wallpaper
+# Set certain Wallpaper.
 xwallpaper --zoom ~/Pictures/wallpapers/archcraft/archcraft-backgrounds/files/forest.jpg
 
-# Set random lockscreen
-# Move to background since this command takes a little while
+# Set random lockscreen.
+# Move to background since this command takes a little while.
 betterlockscreen -u ~/Pictures/lockscreens/ &
 
 dunst &
 unclutter &
 picom -b
-# Start program to notify on changing home-directory
+# Start program to notify on changing home-directory.
 sh $XDG_DATA_HOME/pynnacle/watch-home.sh &
+# Start minimize-daemon to minimize windows/recover minimized windows.
+min
 
-# Finally, start window-manager
+# Finally, start window-manager.
 exec spectrwm
