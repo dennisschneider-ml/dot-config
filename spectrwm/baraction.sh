@@ -31,8 +31,8 @@ sound_device() {
 
 minimized() {
     num_minimized=$(min-list | sed '/^$/D' | wc -l)
-    if [[ $num_minimized != 0 ]]; then
-        echo "󰻀 $num_minimized"
+    if [[ $num_minimized -gt 0 ]]; then
+        echo " $num_minimized"
     fi
 }
 
