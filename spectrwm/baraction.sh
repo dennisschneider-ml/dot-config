@@ -37,6 +37,6 @@ minimized() {
 }
 
 while :; do
-    echo "$(sound_device)   $(minimized)   $(wifi)   $(battery)   $(cpu_temp)   $(mem) |"
+    echo "$(sound_device)   $(wifi)   $(battery)   $(cpu_temp)   $(mem) |"
     sleep 1
 done
