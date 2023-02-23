@@ -30,6 +30,8 @@ export GNUPGHOME=$XDG_DATA_HOME/gnupg
 export STARSHIP_CONFIG=$XDG_CONFIG_HOME/zsh/starship/starship.toml
 export RUSTUP_HOME=$XDG_DATA_HOME/rustup
 export CARGO_HOME=$XDG_DATA_HOME/cargo
+export GOPATH=$XDG_DATA_HOME/go
+export GOMODCACHE=$XDG_DATA_HOME/go/mod
 
 # Own scripts-directory
 export PYNNACLE_DATA=$XDG_DATA_HOME/pynnacle
