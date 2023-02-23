@@ -25,7 +25,7 @@ if is_browser_window $active_window_id 'Brave-browser'; then
 
             mkdir -p "Music/$artist/$album"
             dunstify "Downloading to Music/$artist/$album..."
-            youtube-dl -x --audio-format opus --audio-quality 0 --prefer-ffmpeg --no-playlist -o "Music/$artist/$album/%(title)s.%(ext)s" $url
+            yt-dlp -x --audio-format opus --audio-quality 0 --no-playlist -o "Music/$artist/$album/%(title)s.%(ext)s" $url
             dunstify "Finished downloading music."
         fi
     fi
