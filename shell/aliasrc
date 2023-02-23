@@ -33,7 +33,8 @@ alias \
 	t6="t -L6" \
     open="xdg-open" \
     claws-mail="claws-mail --alternate-config-dir $XDG_CONFIG_HOME/claws-mail" \
-    nb="newsboat"
+    nb="newsboat" \
+    bt="bluetuith"
 
 # Make aliasrc POSIX-compliant. Only load if command exists for this shell
 #if command -v pushd &> /dev/null
