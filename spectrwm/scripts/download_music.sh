@@ -15,19 +15,17 @@ if is_browser_window $active_window_id 'Brave-browser'; then
     old_cache=$(xclip -o)
     xdotool key --clearmodifiers --window $active_window_id 'ctrl+l+c'
     url=$(xclip -o)
+    echo $old_cache | xclip -o -selection clipboard
     if [[ $url == *'youtube.'* ]]; then
-        echo $old_cache | xclip -o -selection clipboard
-        info=$(zenity --forms --title "File information" --add-entry "Artist:" --add-entry "Album:")
-        is_cancelled=$?
-        if [[ $is_cancelled -eq 0 ]]; then
-            artist=$(echo $info | cut -d'|' -f1 | tr ' ' '-')
-            album=$(echo $info | cut -d'|' -f2 | tr ' ' '-')
-
-            mkdir -p "Music/$artist/$album"
-            dunstify "Downloading to Music/$artist/$album..."
-            yt-dlp -x --audio-format opus --audio-quality 0 --no-playlist -o "Music/$artist/$album/%(title)s.%(ext)s" $url
-            dunstify "Finished downloading music."
-        fi
+        artist=$(ls Music | rofi -dmenu -p "Artist") 
+        [ -z "$artist" ] && exit 1
+        mkdir -p Music/"$artist"
+        album=$(ls Music/"$artist" | rofi -dmenu -p "Album") 
+        [ -z "$album" ] && album="$artist"
+        mkdir -p Music/"$artist"/"$album"
+        dunstify "Downloading to Music/$artist/$album..."
+        yt-dlp -x --audio-format opus --audio-quality 0 --no-playlist -o "Music/$artist/$album/%(title)s.%(ext)s" $url
+        dunstify "Finished downloading music."
     fi
 fi
 
