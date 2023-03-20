@@ -1,6 +1,5 @@
 #!/bin/sh
 
-
 wifi() {
     WIFI=$(iwgetid --raw)
     echo "$WIFI"
@@ -29,14 +28,36 @@ sound_device() {
     echo "$SOUND_ICON"
 }
 
-minimized() {
-    num_minimized=$(min-list | sed '/^$/D' | wc -l)
-    if [[ $num_minimized -gt 0 ]]; then
-        echo " $num_minimized"
+crypto() {
+    # Execute every $1 minutes.
+    minute_interval=$1
+    curr_time=$(date +'%T')
+    if (( $(echo "$curr_time" | cut -d':' -f2) % $minute_interval == 0 )) &&\
+        (( $(echo "$curr_time" | cut -d':' -f3) == 0 )); then
+        BTC="$(_crypto_val BTC  EUR €)"
+        ETH="$(_crypto_val ETH 󰡪 EUR €)"
     fi
+    echo "$BTC;$ETH"
 }
 
+_crypto_val() {
+    currency=$1
+    symbol=$2
+    reference_currency=$3
+    reference_symbol=$4
+    value=$(curl -s "https://api.coinbase.com/v2/prices/$currency-$reference_currency/buy" | jq --raw-output '.data.amount' | sed "s/^/$symbol /; s/$/$reference_symbol/")
+    echo "$value"
+}
+
+delim="   "
+BTC="$(_crypto_val BTC  EUR €)"
+ETH="$(_crypto_val ETH 󰡪 EUR €)"
+
 while :; do
-    echo "$(sound_device)   $(wifi)   $(battery)   $(cpu_temp)   $(mem) |"
+    crypto_values=$(crypto 5)
+    BTC=$(echo "$crypto_values" | cut -d';' -f1)
+    ETH=$(echo "$crypto_values" | cut -d';' -f2)
+    echo "  $(sound_device);$BTC;$ETH;$(wifi);$(battery);$(cpu_temp);$(mem) |" |\
+        sed "s/;/$delim/g"
     sleep 1
 done
