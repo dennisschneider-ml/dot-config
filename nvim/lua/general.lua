@@ -13,3 +13,17 @@ vim.o.scrolloff = 3
 vim.o.showmatch = true
 
 vim.bo.undofile = true
+
+vim.cmd([[
+    if has("clipboard")
+        set clipboard=unnamed
+        if has("unnamedplus")
+            set clipboard+=unnamedplus
+        endif
+    endif
+]])
+
+-- Note: Running the check 1e6 times takes 1.1 seconds.
+-- Execute current file.
+vim.keymap.set('n', '<Leader>o', ':wa | !([ -x % ] || chmod +x %) & ./%<CR>')
+
