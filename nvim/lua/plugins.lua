@@ -30,7 +30,10 @@ return require('packer').startup(function()
     use 'windwp/nvim-autopairs'
 
     -- treesitter
-    use 'nvim-treesitter/nvim-treesitter'
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        run = ':TSUpdate'
+    }
 
     -- nerdtree-alternative (not maintained anymore)
     use {'kyazdani42/nvim-tree.lua', requires = {'kyazdani42/nvim-web-devicons'}, tag = 'nightly'}
@@ -57,6 +60,11 @@ return require('packer').startup(function()
         'lervag/vimtex',
     }
 
+    -- Snippets
+    use {
+        "L3MON4D3/LuaSnip",
+    }
+
     -- Show colors
     use {
         'norcalli/nvim-colorizer.lua',
@@ -64,9 +72,9 @@ return require('packer').startup(function()
 
     ---- EXPERIMENTAL
     -- bufferline
-    use {'akinsho/bufferline.nvim', tag='v3.*', requires='nvim-tree/nvim-web-devicons'}
+    use {'akinsho/bufferline.nvim', tag='v4.*', requires='nvim-tree/nvim-web-devicons'}
 
-    use {'lewis6991/gitsigns.nvim', tag = 'release'}
+    use {'lewis6991/gitsigns.nvim'}
 
     use {'lewis6991/impatient.nvim'}
 
