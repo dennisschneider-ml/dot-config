@@ -34,7 +34,8 @@ alias \
     open="xdg-open" \
     claws-mail="claws-mail --alternate-config-dir $XDG_CONFIG_HOME/claws-mail" \
     nb="newsboat" \
-    bt="bluetuith"
+    bt="bluetuith" \
+    e="emacsclient -nc"
 
 # Make aliasrc POSIX-compliant. Only load if command exists for this shell
 #if command -v pushd &> /dev/null
@@ -66,7 +67,7 @@ alias fzf="fzf --preview 'bat --style=numbers --color=always --line-range :500 {
 
 function fuzzy_nvim_start {
     if [ "$#" -eq 0 ]; then
-        nvim +'Telescope find_files hidden=true layout_config={height=0.9}'
+        nvim +'Telescope find_files hidden=false layout_config={height=0.9}'
     else
         nvim $@
     fi

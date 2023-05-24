@@ -4,7 +4,7 @@
 # Deactivate creation of python_history
 export PYTHONSTARTUP=~/.config/python/pythonrc
 
-export PATH="$PATH":~/.local/bin:~/.local/share/cargo/bin
+export PATH="$PATH:$HOME/.local/bin:$HOME/.local/share/cargo/bin:$HOME/.emacs.d/bin:"
 unsetopt PROMPT_SP
 
 # Default programs
