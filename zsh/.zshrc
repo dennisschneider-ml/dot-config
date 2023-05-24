@@ -10,10 +10,15 @@ umask 0077
 
 # Enable tab completion
 autoload -Uz compinit
+# Enable tab completion for Hydra (python-package)
+autoload bashcompinit && bashcompinit
+# Enable tab completion for pydoit
+fpath=($XDG_DATA_HOME/zsh/tabcompletion $fpath)
 
 # XDG-compliance
 compinit -d $XDG_CACHE_HOME/zsh/zcompdump
 HISTFILE=$XDG_CACHE_HOME/shell/histfile
+
 
 ####################################################################################
 # PLUGINS
