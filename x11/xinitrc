@@ -15,6 +15,10 @@ unclutter &
 picom -b
 # Start program to notify on changing home-directory.
 sh $XDG_DATA_HOME/pynnacle/watch-home.sh &
+sh $XDG_DATA_HOME/pynnacle/watch-ma-papers.sh &
+
+# set mouse-knob sensitivity
+xinput --set-prop 'TPPS/2 Elan TrackPoint' 'libinput Accel Speed' -0.4
 
 # Finally, start window-manager.
 exec spectrwm
