@@ -16,8 +16,8 @@ battery() {
 }
 
 cpu_temp() {
-    TEMP=$(sensors | awk '/CPU/{print substr($2,2)}')
-    echo " $TEMP"
+    TEMP=$(cat /sys/class/thermal/thermal_zone8/temp | head -c2)
+    echo " $TEMP°C"
 }
 
 sound_device() {
@@ -59,5 +59,5 @@ while :; do
     ETH=$(echo "$crypto_values" | cut -d';' -f2)
     echo "  $(sound_device);$BTC;$ETH;$(wifi);$(battery);$(cpu_temp);$(mem) |" |\
         sed "s/;/$delim/g"
-    sleep 1
+    sleep 5
 done
