@@ -25,5 +25,5 @@ vim.cmd([[
 
 -- Note: Running the check 1e6 times takes 1.1 seconds.
 -- Execute current file.
-vim.keymap.set('n', '<Leader>o', ':wa | !([ -x % ] || chmod +x %) & ./%<CR>')
+vim.keymap.set('n', '<Leader>o', ':wa | !([ -x % ] || chmod +x %) & %')
 
