@@ -35,6 +35,16 @@ return require('packer').startup(function()
         run = ':TSUpdate'
     }
 
+    -- Create doc-strings.
+    use {
+        'danymat/neogen',
+        requires = 'nvim-treesitter/nvim-treesitter'
+    }
+
+    -- Snippets.
+    use 'dcampos/nvim-snippy'
+    use 'honza/vim-snippets'
+
     -- nerdtree-alternative (not maintained anymore)
     use {'kyazdani42/nvim-tree.lua', requires = {'kyazdani42/nvim-web-devicons'}, tag = 'nightly'}
 
@@ -48,7 +58,9 @@ return require('packer').startup(function()
     use {'nvim-lualine/lualine.nvim', requires = {'kyazdani42/nvim-web-devicons', opt = true}}
 
     -- colorscheme
-    use 'sainnhe/everforest'
+    use {
+        'neanias/everforest-nvim'
+    }
 
     -- markdown preview
     use {'iamcco/markdown-preview.nvim',
