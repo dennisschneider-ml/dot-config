@@ -51,10 +51,10 @@ vim.keymap.set(
 vim.keymap.set('i', '<C-Space>', 'coc#refresh()', expr_opts)
 
 -- Rename variable under cursor
-vim.keymap.set('n', '<Leader>rn', '<Plug>(coc-rename)')
+vim.keymap.set('n', '<leader>rn', '<Plug>(coc-rename)', {desc = "Rename variable"})
 
 -- Reformat file
-vim.keymap.set('n', '<Leader>rf', ':CocCommand prettier.formatFile<CR>')
+vim.keymap.set('n', '<leader>rf', ':CocCommand prettier.formatFile<CR>', {desc = "Reformat file"})
 
 vim.o.completeopt = 'menuone,noinsert,noselect'
 vim.o.shortmess = vim.o.shortmess .. 'c'

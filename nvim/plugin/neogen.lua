@@ -11,5 +11,5 @@ neogen.setup({
     }
 })
 
-vim.keymap.set('n', '<leader>cc', neogen.generate, {noremap=true, silent=true})
+vim.keymap.set('n', '<leader>cc', neogen.generate, {noremap=true, silent=true, desc="Generate comment"})
 

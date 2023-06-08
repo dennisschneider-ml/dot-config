@@ -31,13 +31,6 @@ truezen.setup({
 })
 
 
-local wk = require("which-key")
-
-wk.register({
-    z = {
-        name = "zen",
-        f = { truezen.focus, "Focus Window", expr_opts },
-        m = { truezen.minimalist, "Minimalist Mode", expr_opts },
-        z = { truezen.ataraxis, "Zen Mode", expr_opts },
-    }
-}, { prefix = "<leader>" })
+vim.keymap.set('n', '<leader>zf', truezen.focus, {noremap = true, silent = true, desc = "Focus window"})
+vim.keymap.set('n', '<leader>zm', truezen.minimalist, {noremap = true, silent = true, desc = "Minimalist mode"})
+vim.keymap.set('n', '<leader>zz', truezen.ataraxis, {noremap = true, silent = true, desc = "Zen mode"})

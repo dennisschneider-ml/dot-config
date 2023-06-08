@@ -38,5 +38,5 @@ require('neoclip').setup({
     },
 })
 
-vim.keymap.set('n', '<Leader>p', ':Telescope neoclip default<CR>')
+vim.keymap.set('n', '<Leader>p', ':Telescope neoclip default<CR>', {desc = "Search copy-history"})
 

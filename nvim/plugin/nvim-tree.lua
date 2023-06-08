@@ -21,5 +21,5 @@ nvimtree.setup({
 })
 
 -- open on <leader>tt
-vim.keymap.set('n', '<leader>tt', api.tree.toggle, { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>tt', api.tree.toggle, { noremap = true, silent = true , desc = "Toggle file-tree" })
 

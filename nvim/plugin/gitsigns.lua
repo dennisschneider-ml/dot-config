@@ -59,12 +59,12 @@ require('gitsigns').setup {
         end, {expr=true})
 
         -- Actions
-        map({'n', 'v'}, '<leader>hr', ':Gitsigns reset_hunk<CR>')
-        map('n', '<leader>hR', gs.reset_buffer)
-        map('n', '<leader>hb', function() gs.blame_line{full=true} end)
-        map('n', '<leader>hd', gs.diffthis)
-        map('n', '<leader>hD', function() gs.diffthis('~') end)
-        map('n', '<leader>td', gs.toggle_deleted)
+        map({'n', 'v'}, '<leader>hr', ':Gitsigns reset_hunk<CR>', {desc="Reset hunk"})
+        map('n', '<leader>hR', gs.reset_buffer, {desc="Reset git-buffer"})
+        map('n', '<leader>hb', function() gs.blame_line{full=true} end, {desc="Git blame"})
+        map('n', '<leader>hd', gs.diffthis, {desc="Git diff file"})
+        map('n', '<leader>hD', function() gs.diffthis('~') end, {desc="Git diff?"})
+        map('n', '<leader>ht', gs.toggle_deleted, {desc="Toggle deleted"})
 
         -- Text object
         map({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
