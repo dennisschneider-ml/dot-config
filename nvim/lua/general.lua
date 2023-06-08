@@ -3,6 +3,7 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 
 vim.o.tabstop = 4
 vim.o.softtabstop = 4
@@ -25,5 +26,5 @@ vim.cmd([[
 
 -- Note: Running the check 1e6 times takes 1.1 seconds.
 -- Execute current file.
-vim.keymap.set('n', '<Leader>o', ':wa | !([ -x % ] || chmod +x %) & %')
+vim.keymap.set('n', '<leader>o', ':wa | !([ -x % ] || chmod +x %) & %', {desc = "Execute file"})
 

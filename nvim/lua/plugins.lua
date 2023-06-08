@@ -2,6 +2,9 @@ return require('packer').startup(function()
     -- packer can manage itself
     use 'wbthomason/packer.nvim'
 
+    -- keybindings cheetsheet
+    use 'folke/which-key.nvim'
+
     -- vim-surround
     use 'tpope/vim-surround'
 
