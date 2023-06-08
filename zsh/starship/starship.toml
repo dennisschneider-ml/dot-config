@@ -5,26 +5,28 @@ $directory\
 $git_branch\
 $git_state\
 $git_status\
+$git_metrics\
 $cmd_duration\
 $line_break\
 $python\
 $character"""
 
 [directory]
-style = "blue"
-
+style = "#A7C080"
+ 
 [character]
-success_symbol = "[❯](purple)"
-error_symbol = "[❯](red)"
-vicmd_symbol = "[❮](green)"
+success_symbol = "[❯](#D3C6AA)"
+error_symbol = "[❯](#E67E80)"
+vicmd_symbol = "[❮](#7FBBB3)"
 
 [git_branch]
-format = "[$branch]($style)"
-style = "bright-black"
+format = "[$branch(:$remote_branch)]($style)"
+truncation_length = 4
+style = "#9DA9A0"
 
 [git_status]
 format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
-style = "cyan"
+style = "#7FBBB3"
 conflicted = ""
 untracked = ""
 modified = ""
@@ -33,14 +35,19 @@ renamed = ""
 deleted = ""
 stashed = "≡"
 
+[git_metrics]
+disabled=false
+format = "( [+$added]($added_style) )( [-$deleted]($deleted_style) )"
+
 [git_state]
 format = '\([$state( $progress_current/$progress_total)]($style)\) '
 style = "bright-black"
 
 [cmd_duration]
 format = "[$duration]($style) "
-style = "yellow"
+style = "#A7C080"
 
 [python]
-format = "[$virtualenv]($style) "
-style = "bright-black"
+format = "[${version}( $virtualenv)]($style) "
+version_format = "${major}.${minor}"
+style = "#9DA9A0"
