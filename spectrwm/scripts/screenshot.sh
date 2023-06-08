@@ -1,9 +1,12 @@
 #!/bin/sh
 
+path="~/Pictures/screenshots/$(date -Iseconds).png"
 if [ "$1" == "full" ]; then
-    import -window root ~/Pictures/screenshots/$(date -Iseconds).png
+    import -window root $path
+    dunstify "Full Screenshot saved to $path"
 else 
     if [ "$1" == "window" ]; then
-        import -window "$(xdotool getwindowfocus)" ~/Pictures/screenshots/"$(date -Iseconds).png"
+        import -window "$(xdotool getwindowfocus)" $path
+        dunstify "Window Screenshot saved to $path"
     fi
 fi
