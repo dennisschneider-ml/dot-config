@@ -1,6 +1,6 @@
 #!/bin/sh
 
-path="~/Pictures/screenshots/$(date -Iseconds).png"
+path="$HOME/Pictures/screenshots/$(date -Iseconds).png"
 if [ "$1" == "full" ]; then
     import -window root $path
     dunstify "Full Screenshot saved to $path"
