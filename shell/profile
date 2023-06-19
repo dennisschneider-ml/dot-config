@@ -4,7 +4,7 @@
 # Deactivate creation of python_history
 export PYTHONSTARTUP=~/.config/python/pythonrc
 
-export PATH="$PATH:$HOME/.local/bin:$HOME/.local/share/cargo/bin:$HOME/.emacs.d/bin:"
+export PATH="$PATH:$HOME/.local/bin:$HOME/.local/share/cargo/bin:$HOME/.emacs.d/bin:/opt/cisco/anyconnect/bin"
 unsetopt PROMPT_SP
 
 # Default programs
@@ -32,6 +32,7 @@ export RUSTUP_HOME=$XDG_DATA_HOME/rustup
 export CARGO_HOME=$XDG_DATA_HOME/cargo
 export GOPATH=$XDG_DATA_HOME/go
 export GOMODCACHE=$XDG_DATA_HOME/go/mod
+export PYENV_ROOT=$XDG_DATA_HOME/pyenv
 
 # Own scripts-directory
 export PYNNACLE_DATA=$XDG_DATA_HOME/pynnacle

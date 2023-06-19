@@ -57,6 +57,7 @@ alias net-list="nmcli device wifi list"
 alias net-connect="nmcli device wifi connect --ask"
 
 alias eduroam-connect='sudo systemctl stop NetworkManager; sudo killall wpa_supplicant; sudo systemctl start dhcpcd; sudo wpa_supplicant -i wlan0 -c /etc/wpa_supplicant/eduroam.conf &'
+alias eduroam-disconnect='sudo pkill wpa_supplicant; sudo systemctl stop dhcpcd; sudo systemctl start NetworkManager'
 
 alias print='sudo systemctl start cups; lp -d ts5000'
 # There is no reason, why the printing-deamon should run all the time.
@@ -67,6 +68,8 @@ alias fzf="fzf --preview 'bat --style=numbers --color=always --line-range :500 {
 
 function fuzzy_nvim_start {
     if [ "$#" -eq 0 ]; then
+        nvim +'Telescope find_files hidden=false layout_config={height=0.9}'
+    elif [ -d "$1" ]; then
         nvim +'Telescope find_files hidden=false layout_config={height=0.9}'
     else
         nvim $@
@@ -84,3 +87,4 @@ alias gpp='git push'
 
 alias mn='nvim+"Telescope man_pages layout_config={height=0.9}"'
 
+alias ma='ssh -o "ConnectTimeout=3" -t ma "cd /media/student/Videodaten/dennis; bash --rcfile \"/media/student/Videodaten/dennis/.bashrc\""'
