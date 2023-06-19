@@ -1,0 +1,16 @@
+# Shorter than 'ifmain' from vim-snippets.
+snippet main "Generate the main-function"
+	if __name__ == "__main__":
+		${1:pass}
+
+snippet argparse "Create the ArgumentParser"
+	from argparse import ArgumentParser
+
+
+	if __name__ == "__main__":
+		parser = ArgumentParser()
+		parser.add_argument(${1:argument1})
+		parser.add_argument(${2:argument2})
+		parser.add_argument(${3:argument3})
+		args = parser.parse_args()
+
