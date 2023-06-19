@@ -50,6 +50,7 @@ telescope.load_extension('fzf')
 -- telescope.load_extension('zoxide')
 telescope.load_extension('repo')
 telescope.load_extension('neoclip')
+telescope.load_extension('harpoon')
 
 local builtin = require('telescope.builtin')
 
@@ -67,3 +68,6 @@ vim.keymap.set('n', '<leader>ff', builtin.find_files, {noremap = true, silent = 
 
 -- Grep from files recursively in cwd
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {noremap = true, silent = true, desc = "Global grep"})
+
+-- List harpooned buffers
+vim.keymap.set('n', '<leader>fb', telescope.extensions.harpoon.marks, {noremap = true, silent = true, desc = "Show harpooned buffers"})

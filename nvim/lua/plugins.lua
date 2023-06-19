@@ -28,6 +28,12 @@ return require('packer').startup(function()
             'nvim-lua/plenary.nvim'
         }
     }
+    -- harpoon
+    use {'ThePrimeagen/harpoon',
+        requires = {
+            'nvim-lua/plenary.nvim'
+        }
+    }
 
     -- auto-generate bracket-pairs
     use 'windwp/nvim-autopairs'
