@@ -21,7 +21,6 @@ vicmd_symbol = "[❮](#7FBBB3)"
 
 [git_branch]
 format = "[$branch(:$remote_branch)]($style)"
-truncation_length = 4
 style = "#9DA9A0"
 
 [git_status]
@@ -51,3 +50,4 @@ style = "#A7C080"
 format = "[${version}( $virtualenv)]($style) "
 version_format = "${major}.${minor}"
 style = "#9DA9A0"
+pyenv_version_name = true
