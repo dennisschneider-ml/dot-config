@@ -2,7 +2,7 @@ return require('packer').startup(function()
     -- packer can manage itself
     use 'wbthomason/packer.nvim'
 
-    -- keybindings cheetsheet
+    -- keybindings cheatsheet
     use 'folke/which-key.nvim'
 
     -- vim-surround
@@ -81,11 +81,6 @@ return require('packer').startup(function()
         'lervag/vimtex',
     }
 
-    -- Snippets
-    use {
-        "L3MON4D3/LuaSnip",
-    }
-
     -- Show colors
     use {
         'norcalli/nvim-colorizer.lua',
@@ -99,7 +94,12 @@ return require('packer').startup(function()
 
     use {'lewis6991/impatient.nvim'}
 
-    use {'akinsho/toggleterm.nvim'}
+    use {'mfussenegger/nvim-dap',
+        requires = {
+            'mfussenegger/nvim-dap-python',
+            'theHamsta/nvim-dap-virtual-text'
+        }
+    }
 
 end)
 

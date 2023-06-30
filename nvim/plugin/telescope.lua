@@ -70,4 +70,4 @@ vim.keymap.set('n', '<leader>ff', builtin.find_files, {noremap = true, silent = 
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {noremap = true, silent = true, desc = "Global grep"})
 
 -- List harpooned buffers
-vim.keymap.set('n', '<leader>fb', telescope.extensions.harpoon.marks, {noremap = true, silent = true, desc = "Show harpooned buffers"})
+vim.keymap.set('n', '<leader>fh', telescope.extensions.harpoon.marks, {noremap = true, silent = true, desc = "Show harpooned buffers"})
