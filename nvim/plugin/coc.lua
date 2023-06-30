@@ -5,6 +5,7 @@ vim.g.coc_global_extensions = {
 	'coc-pyright', -- python language-support
     'coc-vimtex', -- latex language-support
     'coc-sh', -- sh language-support
+    'coc-lua', -- lua language-support
     'coc-rust-analyzer', -- rust language support
 	'coc-fzf-preview', -- fzf-integration in coc
 	'coc-prettier',
