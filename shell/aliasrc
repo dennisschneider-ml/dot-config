@@ -70,7 +70,7 @@ function fuzzy_nvim_start {
     if [ "$#" -eq 0 ]; then
         nvim +'Telescope find_files hidden=false layout_config={height=0.9}'
     elif [ -d "$1" ]; then
-        nvim +'Telescope find_files hidden=false layout_config={height=0.9}'
+        nvim +"Telescope find_files hidden=false layout_config={height=0.9} cwd=$1"
     else
         nvim $@
     fi
