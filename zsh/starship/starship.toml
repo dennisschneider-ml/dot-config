@@ -8,6 +8,7 @@ $git_status\
 $git_metrics\
 $cmd_duration\
 $line_break\
+$jobs\
 $python\
 $character"""
 
@@ -51,3 +52,7 @@ format = "[${version}( $virtualenv)]($style) "
 version_format = "${major}.${minor}"
 style = "#9DA9A0"
 pyenv_version_name = true
+
+[jobs]
+symbol = '󰑮'
+symbol_threshold = 1
