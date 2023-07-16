@@ -54,6 +54,9 @@ source $ZDOTDIR/inputrc.zsh
 eval "$(starship init zsh)"
 # zoxide
 eval "$(zoxide init zsh)"
+# pyenv
+eval "$(pyenv init -)"
+
 
 source /usr/share/fzf/completion.zsh
 source /usr/share/fzf/key-bindings.zsh
