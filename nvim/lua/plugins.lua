@@ -5,24 +5,56 @@ return require('packer').startup(function()
     -- keybindings cheatsheet
     use 'folke/which-key.nvim'
 
+    -- ! VIMSCRIPT
     -- vim-surround
-    use 'tpope/vim-surround'
+    -- use 'tpope/vim-surround'
 
+    -- ! VIMSCRIPT
+    -- same as neogen??
     -- vim-commentary
-    use 'tpope/vim-commentary'
+    -- use 'tpope/vim-commentary'
 
+    -- ! VIMSCRIPT
     -- git
-    use 'tpope/vim-fugitive'
+    -- use 'tpope/vim-fugitive'
 
     -- coc
     use {'neoclide/coc.nvim', branch='release'}
+    
+    -- coc alternative
+    --use "neovim/nvim-lspconfig" -- enable LSP
+    --use "williamboman/nvim-lsp-installer"
+    --use "hrsh7th/cmp-nvim-lsp"
+    -- use "williamboman/mason.nvim"
+    -- use "williamboman/mason-lspconfig.nvim"
+    -- use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
+    -- use "hrsh7th/nvim-cmp"
+    -- use "hrsh7th/cmp-nvim-lsp"
+
+ --    use {'VonHeikemen/lsp-zero.nvim',
+ --        branch = 'v2.x',
+ --        requires = {
+ --            {'neovim/nvim-lspconfig'},
+ --            {
+ --                'williamboman/mason.nvim',
+ --                run = function()
+ --                    pcall(vim.cmd, "MasonUpdate")
+ --                end,
+ --            },
+ --            {'williamboman/mason-lspconfig.nvim'},
+ --            {'hrsh7th/nvim-cmp'},
+ --            {'hrsh7th/cmp-nvim-lsp'},
+ --            {'L3MON4D3/LuaSnip'}
+ --        }
+ --    }
 
     -- fzf
     -- telescope
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
     use 'AckslD/nvim-neoclip.lua'
     use 'cljoly/telescope-repo.nvim'
-    use 'nanotee/zoxide.vim'
+    -- ! VIMSCRIPT
+    -- use 'nanotee/zoxide.vim'
     use {'nvim-telescope/telescope.nvim',
         requires = {
             'nvim-lua/plenary.nvim'
@@ -52,6 +84,7 @@ return require('packer').startup(function()
 
     -- Snippets.
     use 'dcampos/nvim-snippy'
+    -- ! VIMSCRIPT (why needed?)
     use 'honza/vim-snippets'
 
     -- nerdtree-alternative (not maintained anymore)
@@ -61,7 +94,8 @@ return require('packer').startup(function()
     use 'pocco81/true-zen.nvim'
 
     -- dim inactive portions of code
-    use 'folke/twilight.nvim'
+    -- ! UNUSED
+    -- use 'folke/twilight.nvim'
 
     -- lualine
     use {'nvim-lualine/lualine.nvim', requires = {'kyazdani42/nvim-web-devicons', opt = true}}
@@ -72,11 +106,13 @@ return require('packer').startup(function()
     }
 
     -- markdown preview
-    use {'iamcco/markdown-preview.nvim',
-        run = function() vim.fn["mkdp#util#install"]() end,
-    }
+    -- ! VIMSCRIPT
+    -- use {'iamcco/markdown-preview.nvim',
+    --     run = function() vim.fn["mkdp#util#install"]() end,
+    -- }
 
     -- Latex plugin
+    -- ! VIMSCRPIT
     use {
         'lervag/vimtex',
     }
@@ -99,6 +135,14 @@ return require('packer').startup(function()
             'mfussenegger/nvim-dap-python',
             'theHamsta/nvim-dap-virtual-text'
         }
+    }
+
+    use {'stsewd/isort.nvim', 
+        run = ':UpdateRemotePlugins'
+    }
+
+    use {'folke/todo-comments.nvim',
+        requires = {'nvim-lua/plenary.nvim'}
     }
 
 end)

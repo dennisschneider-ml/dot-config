@@ -71,3 +71,6 @@ vim.keymap.set('n', '<leader>fg', builtin.live_grep, {noremap = true, silent = t
 
 -- List harpooned buffers
 vim.keymap.set('n', '<leader>fh', telescope.extensions.harpoon.marks, {noremap = true, silent = true, desc = "Show harpooned buffers"})
+
+-- List todo items
+vim.keymap.set('n', '<leader>ft', ":TodoTelescope<CR>", {noremap = true, silent = true, desc = "Todo-Comments"})

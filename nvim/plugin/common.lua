@@ -8,7 +8,7 @@ local npairs_loaded, npairs = pcall(require, 'nvim-autopairs')
 
 
 -- plugin-common <CR> handling
-function cr_handling()
+local function cr_handling()
     if vim.call('coc#pum#visible') == 1 then
         return vim.call('coc#pum#confirm')
     elseif npairs_loaded then
