@@ -88,4 +88,4 @@ alias gpp='git push'
 
 alias mn='nvim+"Telescope man_pages layout_config={height=0.9}"'
 
-alias ma='ssh -o "ConnectTimeout=3" -t ma "cd /media/student/Videodaten/dennis; bash --rcfile \"/media/student/Videodaten/dennis/.bashrc\""'
+alias ma='ssh -o "ConnectTimeout=3" -L 16006:localhost:6006 -t ma "cd /media/student/Videodaten/dennis; bash --rcfile \"/media/student/Videodaten/dennis/.bashrc\""'
