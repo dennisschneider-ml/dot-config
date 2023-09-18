@@ -1,6 +1,6 @@
 require('lualine').setup({
     options = {
-        theme = 'auto',
+        theme = 'dracula-nvim',
     },
     sections = {
         lualine_a = {'mode'},
@@ -9,7 +9,7 @@ require('lualine').setup({
         lualine_x = {
             {
                 'diagnostics',
-                sources = {'coc'},
+                sources = {'nvim_lsp'},
             }
         },
         lualine_y = {},

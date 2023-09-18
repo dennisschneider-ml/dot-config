@@ -1,7 +1,7 @@
 require('bufferline').setup{
     options = {
         mode = 'tabs',
-        diagnostics = 'coc',
+        diagnostics = 'nvim_lsp',
         always_show_bufferline = false,
         offsets = {
             {
