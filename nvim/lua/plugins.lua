@@ -5,56 +5,30 @@ return require('packer').startup(function()
     -- keybindings cheatsheet
     use 'folke/which-key.nvim'
 
-    -- ! VIMSCRIPT
-    -- vim-surround
-    -- use 'tpope/vim-surround'
+    -- cmp
+    use "dcampos/cmp-snippy" -- Suggest Snippets.
+    use "hrsh7th/cmp-path" -- Suggest file paths.
+    use "hrsh7th/cmp-buffer" -- Suggest words found in current buffer.
+    use "hrsh7th/cmp-nvim-lsp" -- Make suggestions based on LSP.
+    use "hrsh7th/cmp-cmdline" -- Make suggestions based on LSP.
+    use "hrsh7th/cmp-nvim-lsp-signature-help" -- Make suggestions based on LSP.
+    use "hrsh7th/nvim-cmp"-- Code completion.
 
-    -- ! VIMSCRIPT
-    -- same as neogen??
-    -- vim-commentary
-    -- use 'tpope/vim-commentary'
-
-    -- ! VIMSCRIPT
-    -- git
-    -- use 'tpope/vim-fugitive'
-
-    -- coc
-    use {'neoclide/coc.nvim', branch='release'}
-    
-    -- coc alternative
-    --use "neovim/nvim-lspconfig" -- enable LSP
-    --use "williamboman/nvim-lsp-installer"
-    --use "hrsh7th/cmp-nvim-lsp"
-    -- use "williamboman/mason.nvim"
-    -- use "williamboman/mason-lspconfig.nvim"
-    -- use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
-    -- use "hrsh7th/nvim-cmp"
-    -- use "hrsh7th/cmp-nvim-lsp"
-
- --    use {'VonHeikemen/lsp-zero.nvim',
- --        branch = 'v2.x',
- --        requires = {
- --            {'neovim/nvim-lspconfig'},
- --            {
- --                'williamboman/mason.nvim',
- --                run = function()
- --                    pcall(vim.cmd, "MasonUpdate")
- --                end,
- --            },
- --            {'williamboman/mason-lspconfig.nvim'},
- --            {'hrsh7th/nvim-cmp'},
- --            {'hrsh7th/cmp-nvim-lsp'},
- --            {'L3MON4D3/LuaSnip'}
- --        }
- --    }
+    -- lsp
+    use "neovim/nvim-lspconfig"
+    use {
+        "ThePrimeagen/refactoring.nvim",
+        requires = {
+            {"nvim-lua/plenary.nvim"},
+            {"nvim-treesitter/nvim-treesitter"}
+        }
+    }
 
     -- fzf
     -- telescope
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
     use 'AckslD/nvim-neoclip.lua'
     use 'cljoly/telescope-repo.nvim'
-    -- ! VIMSCRIPT
-    -- use 'nanotee/zoxide.vim'
     use {'nvim-telescope/telescope.nvim',
         requires = {
             'nvim-lua/plenary.nvim'
@@ -84,7 +58,6 @@ return require('packer').startup(function()
 
     -- Snippets.
     use 'dcampos/nvim-snippy'
-    -- ! VIMSCRIPT (why needed?)
     use 'honza/vim-snippets'
 
     -- nerdtree-alternative (not maintained anymore)
@@ -93,10 +66,6 @@ return require('packer').startup(function()
     -- goyo-alternative
     use 'pocco81/true-zen.nvim'
 
-    -- dim inactive portions of code
-    -- ! UNUSED
-    -- use 'folke/twilight.nvim'
-
     -- lualine
     use {'nvim-lualine/lualine.nvim', requires = {'kyazdani42/nvim-web-devicons', opt = true}}
 
@@ -104,12 +73,14 @@ return require('packer').startup(function()
     use {
         'neanias/everforest-nvim'
     }
-
-    -- markdown preview
-    -- ! VIMSCRIPT
-    -- use {'iamcco/markdown-preview.nvim',
-    --     run = function() vim.fn["mkdp#util#install"]() end,
-    -- }
+    use {
+        'Mofiqul/dracula.nvim',
+        config = function() require('dracula').setup({
+            transparent_bg = true,
+            italic_comment = true
+        }) end
+    }
+    use 'drewtempelmeyer/palenight.vim'
 
     -- Latex plugin
     -- ! VIMSCRPIT
