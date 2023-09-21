@@ -1,12 +1,12 @@
 local lspconfig = require("lspconfig")
 
---local lsp_defaults = lspconfig.util.default_config
+local lsp_defaults = lspconfig.util.default_config
 
---lsp_defaults.capabilities = vim.tbl_deep_extend(
---    'force',
---    lsp_defaults.capabilities,
---    require('cmp_nvim_lsp').default_capabilities()
---)
+lsp_defaults.capabilities = vim.tbl_deep_extend(
+    'force',
+    lsp_defaults.capabilities,
+    require('cmp_nvim_lsp').default_capabilities()
+)
 --
 --
 -- Rope alternative
@@ -99,7 +99,6 @@ cmp.setup({
 
     mapping = {
         ['<C-Space>'] = cmp.mapping.complete(),
-        ['<CR>'] = cmp.mapping.confirm({select = true}),
         ['<C-k>'] = cmp.mapping.select_prev_item(select_opts),
         ['<C-j>'] = cmp.mapping.select_next_item(select_opts),
         ['<Tab>'] = cmp.mapping(function(fallback)

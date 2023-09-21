@@ -5,6 +5,7 @@ The plugin-specific modules still only know about themselves.
 
 -- conditional libraries
 local npairs_loaded, npairs = pcall(require, 'nvim-autopairs')
+local cmp_loaded, cmp = pcall(require, 'cmp')
 
 
 -- plugin-common <CR> handling
@@ -12,7 +13,9 @@ local function cr_handling()
     --if vim.call('coc#pum#visible') == 1 then
     --    return vim.call('coc#pum#confirm')
     --elseif npairs_loaded then
-    if npairs_loaded then
+    if cmp.visible() then
+        return cmp.mapping.confirm({select = true})
+    elseif npairs_loaded then
         return npairs.autopairs_cr()
     else
         return '<CR>'
