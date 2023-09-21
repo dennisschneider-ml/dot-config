@@ -7,7 +7,7 @@ alias \
 	mv="mv -iv" \
 	rm="rm -vI" \
 	mkd="mkdir -pv" \
-	cat="bat --plain --theme gruvbox-dark "
+	cat="bat --plain --theme OneHalfDark "
 
 # Colorize commands when possible
 alias \
@@ -17,22 +17,21 @@ alias \
 
 # Abbreviations
 alias \
-	c="clear" \
-	l="exa -lah --no-filesize --git" \
-	..="cd .." \
-	...="cd ../.." \
-	....="cd ../../.." \
-	.....="cd ../../../.." \
-	......="cd ../../../../.." \
-	t="exa --tree --icons" \
-	t1="t -L1" \
-	t2="t -L2" \
-	t3="t -L3" \
-	t4="t -L4" \
-	t5="t -L5" \
-	t6="t -L6" \
+    c="clear" \
+    l="exa -lah --no-filesize --git" \
+    ..="cd .." \
+    ...="cd ../.." \
+    ....="cd ../../.." \
+    .....="cd ../../../.." \
+    ......="cd ../../../../.." \
+    t="exa --tree --icons" \
+    t1="t -L1" \
+    t2="t -L2" \
+    t3="t -L3" \
+    t4="t -L4" \
+    t5="t -L5" \
+    t6="t -L6" \
     open="xdg-open" \
-    claws-mail="claws-mail --alternate-config-dir $XDG_CONFIG_HOME/claws-mail" \
     nb="newsboat" \
     bt="bluetuith" \
     e="emacsclient -nc"
@@ -80,6 +79,7 @@ alias v='fuzzy_nvim_start'
 
 ## git
 alias gs='git status --short'
+alias gl='git log'
 alias gd='git diff'
 alias ga='git add'
 alias gc='git commit'

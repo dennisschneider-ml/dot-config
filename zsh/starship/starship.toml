@@ -13,20 +13,20 @@ $python\
 $character"""
 
 [directory]
-style = "#A7C080"
+style = "#B18AE8"
  
 [character]
-success_symbol = "[❯](#D3C6AA)"
-error_symbol = "[❯](#E67E80)"
-vicmd_symbol = "[❮](#7FBBB3)"
+success_symbol = "[❯](#50FA7B)"
+error_symbol = "[❯](#FF5555)"
+vicmd_symbol = "[❮](#6272A4)"
 
 [git_branch]
 format = "[$branch(:$remote_branch)]($style)"
-style = "#9DA9A0"
+style = "#6272A4"
 
 [git_status]
 format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
-style = "#7FBBB3"
+style = "#8BE9FD"
 conflicted = ""
 untracked = ""
 modified = ""
@@ -45,12 +45,12 @@ style = "bright-black"
 
 [cmd_duration]
 format = "[$duration]($style) "
-style = "#A7C080"
+style = "#BD93F9"
 
 [python]
 format = "[${version}( $virtualenv)]($style) "
 version_format = "${major}.${minor}"
-style = "#9DA9A0"
+style = "#ABB2BF"
 pyenv_version_name = true
 
 [jobs]

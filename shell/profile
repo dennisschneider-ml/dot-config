@@ -48,6 +48,7 @@ export LS_COLORS="$(vivid generate everforest)"
 
 if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
     # use custom-placed xinitrc, so it does not clutter the home-dir
-	exec startx $XINITRC
+    # exec startx $XINITRC
+    echo "Hello there!"
 fi
 

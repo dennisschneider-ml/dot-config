@@ -1,8 +1,11 @@
 from libqtile import bar, layout, widget
-from libqtile.config import Click, Drag, Group, Key, Match, Screen, ScratchPad, DropDown
+from libqtile.config import Click, Drag, Group, Key, Match, Screen, ScratchPad, DropDown, Bar
 from libqtile.lazy import lazy
-from libqtile.utils import guess_terminal
+from libqtile import hook
+from libqtile import qtile
 
+# wifi
+# sound
 mod = "mod4"
 terminal = "alacritty"
 
@@ -23,42 +26,45 @@ keys = [
     #Key([mod, "shift"], "k", lazy.layout.shuffle_up(), desc="Move window up"),
     # Grow windows. If current window is on the edge of screen and direction
     # will be to screen edge - window would shrink.
-    Key([mod, "shift"], "h", lazy.layout.grow_left(), desc="Grow window to the left"),
-    Key([mod, "shift"], "l", lazy.layout.grow_right(), desc="Grow window to the right"),
+    Key([mod, "shift"], "h", lazy.layout.shrink(), desc="Grow window to the right"),
+    Key([mod, "shift"], "l", lazy.layout.grow(), desc="Grow window to the left"),
     #Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
     #Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
     Key([mod, "shift"], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
+    Key([mod], "n", lazy.spawn("sh .config/spectrwm/scripts/toggle_wifi.sh"), desc="Reset all window sizes"),
+    Key([mod], "r", lazy.spawn("sh .config/spectrwm/scripts/toggle_bluetooth.sh"), desc="Reset all window sizes"),
+    Key([mod], "c", lazy.spawn("sh .config/spectrwm/scripts/toggle_battery_mode.sh"), desc="Reset all window sizes"),
+    Key([mod], "p", lazy.spawn("sh .config/spectrwm/scripts/pass_menu.sh"), desc="Reset all window sizes"),
     Key([mod], "f", lazy.window.toggle_floating(), desc="Toggle floating"),
-    # Toggle between split and unsplit sides of stack.
-    # Split = all windows displayed
-    # Unsplit = 1 window displayed, like Max layout, but still with
-    # multiple stack panes
-    Key(
-        [mod, "shift"],
-        "f",
-        lazy.layout.toggle_split(),
-        desc="Toggle between split and unsplit sides of stack",
-    ),
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     Key([mod], "b", lazy.spawn("qutebrowser"), desc="Launch browser"),
-    Key([mod], "m", lazy.spawn("neomutt"), desc="Launch mails"),
+    Key([mod], "t", lazy.spawn("sh .config/spectrwm/scripts/toggle_mousepad.sh"), desc="Launch mails"),
+    Key([mod, "control"], "delete", lazy.spawn("betterlockscreen --lock"), desc="Launch mails"),
     Key([mod], "space", lazy.spawn("rofi -show run"), desc="Launch browser"),
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.window.toggle_fullscreen(), desc="Toggle fullscreen"),
+    Key([mod, "shift"], "Tab", lazy.next_layout(), desc="Toggle fullscreen"),
     Key([mod, "shift"], "b", lazy.hide_show_bar("top"), desc="Launch browser"),
     Key([mod], "a", lazy.group["0"].dropdown_toggle("alacritty"), desc="Launch terminal"),
     Key([mod], "w", lazy.window.toggle_minimize(), desc="Minimize focused window"),
     Key([mod, "shift"], "w", lazy.window.toggle_minimize(), desc="Minimize focused window"),
     Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
+
+
+    Key([mod], "i", lazy.spawn("sh .config/spectrwm/scripts/invert_colors.sh"), desc="Reload the config"),
+    Key([], "XF86MonBrightnessUp", lazy.spawn("sh /home/dns/.config/spectrwm/scripts/inc_brightness.sh")),
+    Key([], "XF86MonBrightnessDown", lazy.spawn("sh /home/dns/.config/spectrwm/scripts/dec_brightness.sh")),
+    Key([], "XF86AudioRaiseVolume", lazy.spawn("sh /home/dns/.config/spectrwm/scripts/inc_volume.sh")),
+    Key([], "XF86AudioLowerVolume", lazy.spawn("sh /home/dns/.config/spectrwm/scripts/dec_volume.sh")),
+    Key([], "XF86AudioMute", lazy.spawn("sh /home/dns/.config/spectrwm/scripts/mute_volume.sh")),
+    Key([mod], 'm', lazy.group['scratchpads'].dropdown_toggle('mails'),),
+    Key([mod], 'a', lazy.group['scratchpads'].dropdown_toggle('music'),),
 ]
+
 
 groups = [Group(i, label="󰝥") for i in "123456789"]
 
-ScratchPad('0', [
-    DropDown("alacritty",
-             ["alacritty"])
-])
 for i in groups:
     keys.extend(
         [
@@ -83,23 +89,56 @@ for i in groups:
         ]
     )
 
+groups.extend([
+    ScratchPad('scratchpads', [
+        DropDown(
+            'music',
+            ['alacritty', '-e', 'ncmpcpp'],
+            height = 0.8,
+            width = 0.8,
+            x = 0.1,
+            y = 0.1,
+            on_focus_lost_hide = True,
+            warp_pointer = False,
+        ),
+        DropDown(
+            'mails',
+            ['alacritty', '-e', 'neomutt'],
+            height = 0.8,
+            width = 0.8,
+            x = 0.1,
+            y = 0.1,
+            on_focus_lost_hide = True,
+            warp_pointer = True,
+        ),
+
+    ]),
+])
+
 layouts = [
-    #layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=2),
-    # Try more layouts by unleashing below layouts.
-    # layout.Stack(num_stacks=2),
-    # layout.Bsp(),
-    # layout.Matrix(),
     layout.MonadTall(
         border_focus="#EEEEFF",
-        border_width=2,
+        border_width=1,
+        new_client_position="bottom",
+        single_border_width=0,
     ),
+    layout.MonadWide(
+        border_focus="#EEEEFF",
+        border_width=1,
+        new_client_position="bottom",
+        single_border_width=0,
+    ),
+    layout.Max(),
+    layout.TreeTab(),
 ]
 
+bar_color = "#222255"
 widget_defaults = dict(
     font="sans",
     fontsize=14,
     rounded=True,
     padding=4,
+    background=bar_color
 )
 extension_defaults = widget_defaults.copy()
 
@@ -110,19 +149,33 @@ screens = [
                 widget.Memory(format='{MemUsed: .0f} {mm}'),
                 widget.Sep(),
                 widget.ThermalSensor(),
-                widget.Spacer(),
+                widget.TextBox("", 
+                               foreground=bar_color, 
+                               background="#000000.0",
+                               padding=0,
+                               fontshadow=bar_color,
+                               fontsize=16),
+                widget.Spacer(background="#000000.0"),
                 widget.GroupBox(highlight_method="text",
                                 center_aligned=True,
                                 this_current_screen_border="#EEEEFF",
-                                active="#7777BB"
+                                active="#7777BB",
+                                background="#000000.0",
+                                fontsize=12,
                                 ),
-                widget.Spacer(),
-                widget.Battery(),
+                widget.Spacer(background="#000000.0"),
+                widget.TextBox("", 
+                               foreground=bar_color, 
+                               background="#000000.0",
+                               fontshadow=bar_color,
+                               padding=0,
+                               fontsize=16),
+                widget.Battery(unknown_char=""),
                 widget.Sep(),
                 widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
             ],
             20,
-            background="#5464B1",
+            background="#000000.0",
             opacity=1,
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
@@ -174,3 +227,8 @@ wl_input_rules = None
 # We choose LG3D to maximize irony: it is a 3D non-reparenting WM written in
 # java that happens to be on java's whitelist.
 wmname = "LG3D"
+
+#@hook.subscribe.setgroup
+# def change_group():
+#    screens[0].bottom.show(False)
+
