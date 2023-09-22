@@ -204,7 +204,8 @@ floating_layout = layout.Floating(
         Match(wm_class="maketag"),  # gitk
         Match(wm_class="ssh-askpass"),  # ssh-askpass
         Match(title="branchdialog"),  # gitk
-        Match(title="pinentry"),  # GPG key password entry
+        Match(wm_class="pinentry-gtk-2"),  # GPG key password entry
+        Match(wm_class="com.cisco.anyconnect.gui"),  # GPG key password entry
     ]
 )
 auto_fullscreen = True
