@@ -101,21 +101,22 @@ cmp.setup({
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<C-k>'] = cmp.mapping.select_prev_item(select_opts),
         ['<C-j>'] = cmp.mapping.select_next_item(select_opts),
-        ['<Tab>'] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-                cmp.select_next_item(select_opts)
-            elseif snippy ~= nil then
-                if snippy.expandable() then
-                    snippy.expand()
-                elseif snippy.can_expand_or_advance() then
-                    snippy.expand_or_advance()
-                else
-                    fallback()
-                end
-            else
-                fallback()
-            end
-        end, {'i', 's'}),
+--        ['<Tab>'] = cmp.mapping(function(fallback)
+--            if cmp.visible() then
+--                cmp.select_next_item(select_opts)
+--            elseif snippy ~= nil then
+--                if snippy.expandable() then
+--                    snippy.expand()
+--                elseif snippy.can_expand_or_advance() then
+--                    snippy.expand_or_advance()
+--                else
+--                    fallback()
+--                end
+--            else
+--                fallback()
+--            end
+--        end, {'i', 's'}),
+        ['<CR>'] = cmp.mapping.confirm({ select = true }),
     }
 })
 
