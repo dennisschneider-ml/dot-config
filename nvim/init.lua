@@ -1,6 +1,7 @@
+-- 'plugins' has to run first, since it installs all required plugins.
+require('plugins')
 require('general')
 require('appearance')
 require('navigation')
-require('plugins')
 require('custom.dev')
 -- require('custom.lsp')
