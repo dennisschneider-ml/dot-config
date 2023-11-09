@@ -7,7 +7,7 @@ from libqtile import qtile
 # wifi
 # sound
 mod = "mod4"
-terminal = "alacritty"
+terminal = "kitty"
 
 keys = [
     # A list of available commands that can be bound to keys can be found
@@ -17,7 +17,7 @@ keys = [
     Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
     Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
     Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
-    Key([mod], "space", lazy.layout.next(), desc="Move window focus to other window"),
+    #Key([mod], "space", lazy.layout.next(), desc="Move window focus to other window"),
     # Move windows between left/right columns or move up/down in current stack.
     # Moving out of range in Columns layout will create new column.
     #Key([mod, "shift"], "h", lazy.layout.shuffle_left(), desc="Move window to the left"),
@@ -45,9 +45,8 @@ keys = [
     Key([mod], "Tab", lazy.window.toggle_fullscreen(), desc="Toggle fullscreen"),
     Key([mod, "shift"], "Tab", lazy.next_layout(), desc="Toggle fullscreen"),
     Key([mod, "shift"], "b", lazy.hide_show_bar("top"), desc="Launch browser"),
-    Key([mod], "a", lazy.group["0"].dropdown_toggle("alacritty"), desc="Launch terminal"),
-    Key([mod], "w", lazy.window.toggle_minimize(), desc="Minimize focused window"),
-    Key([mod, "shift"], "w", lazy.window.toggle_minimize(), desc="Minimize focused window"),
+    Key([mod], "w", lazy.spawn("Qminimize -m"), desc="Minimize focused window"),
+    Key([mod, "shift"], "w", lazy.spawn("Qminimize -u"), desc="Minimize focused window"),
     Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
 
@@ -58,8 +57,11 @@ keys = [
     Key([], "XF86AudioRaiseVolume", lazy.spawn("sh /home/dns/.config/spectrwm/scripts/inc_volume.sh")),
     Key([], "XF86AudioLowerVolume", lazy.spawn("sh /home/dns/.config/spectrwm/scripts/dec_volume.sh")),
     Key([], "XF86AudioMute", lazy.spawn("sh /home/dns/.config/spectrwm/scripts/mute_volume.sh")),
+    Key([mod], "s", lazy.spawn("sh /home/dns/.config/spectrwm/scripts/screenshot.sh window")),
+    #Key(["shift"], "PrtSc", lazy.spawn("sh /home/dns/.config/spectrwm/scripts/screenshot.sh window")),
     Key([mod], 'm', lazy.group['scratchpads'].dropdown_toggle('mails'),),
     Key([mod], 'a', lazy.group['scratchpads'].dropdown_toggle('music'),),
+    Key([mod], 'u', lazy.group['scratchpads'].dropdown_toggle('math'),),
 ]
 
 
@@ -93,7 +95,7 @@ groups.extend([
     ScratchPad('scratchpads', [
         DropDown(
             'music',
-            ['alacritty', '-e', 'ncmpcpp'],
+            [terminal, '-e', 'ncmpcpp'],
             height = 0.8,
             width = 0.8,
             x = 0.1,
@@ -103,7 +105,7 @@ groups.extend([
         ),
         DropDown(
             'mails',
-            ['alacritty', '-e', 'neomutt'],
+            [terminal, '-e', 'neomutt'],
             height = 0.8,
             width = 0.8,
             x = 0.1,
@@ -111,7 +113,16 @@ groups.extend([
             on_focus_lost_hide = True,
             warp_pointer = True,
         ),
-
+        DropDown(
+            'math',
+            [terminal, '-e', 'genius'],
+            height = 0.8,
+            width = 0.4,
+            x = 0.5,
+            y = 0.1,
+            on_focus_lost_hide = True,
+            warp_pointer = True,
+        ),
     ]),
 ])
 
