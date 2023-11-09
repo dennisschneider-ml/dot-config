@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Load Xresources-file in custom location.
-xrdb -I$XDG_CONFIG_HOME/x11 $XDG_CONFIG/HOME/x11/Xresources
+xrdb -I$XDG_CONFIG_HOME/x11 $XDG_CONFIG_HOME/x11/Xresources
 
 # Set certain Wallpaper.
 xwallpaper --zoom ~/Pictures/wallpapers/purple.jpg
@@ -19,7 +19,7 @@ sh $XDG_DATA_HOME/pynnacle/watch-home.sh &
 sh $XDG_DATA_HOME/pynnacle/watch-ma-papers.sh &
 
 # set mouse-knob sensitivity
-xinput --set-prop 'TPPS/2 Elan TrackPoint' 'libinput Accel Speed' -0.3
+xinput set-prop 'TPPS/2 Elan TrackPoint' 'libinput Accel Speed' -0.3
 xinput set-prop 'SynPS/2 Synaptics TouchPad' 'Device Enabled' 0
 
 # Finally, start window-manager.
