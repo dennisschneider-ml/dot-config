@@ -43,7 +43,7 @@ export FZF_COMPLETION_TRIGGER=,,
 export FZF_COMPLETION_OPTS='--hidden --exclude ".git" --preview="bat"'
 # NNN is only configured through ENV-vars, so these are bundles accordingly
 source $XDG_CONFIG_HOME/nnn/config.nnn
-export LS_COLORS="$(vivid generate everforest)"
+export LS_COLORS="$(vivid generate dracula)"
 
 
 if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
