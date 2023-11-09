@@ -53,7 +53,7 @@ alias music-dl="youtube-dl -x --audio-format opus --audio-quality 0 --prefer-ffm
 # List available wifi-networks
 alias net-list="nmcli device wifi list"
 # Connect to wifi-network with given SSID
-alias net-connect="nmcli device wifi connect --ask"
+alias net-connect="nmcli device wifi connect" # --ask"
 
 alias eduroam-connect='sudo systemctl stop NetworkManager; sudo killall wpa_supplicant; sudo systemctl start dhcpcd; sudo wpa_supplicant -i wlan0 -c /etc/wpa_supplicant/eduroam.conf &'
 alias eduroam-disconnect='sudo pkill wpa_supplicant; sudo systemctl stop dhcpcd; sudo systemctl start NetworkManager'
