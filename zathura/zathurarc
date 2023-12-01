@@ -2,3 +2,6 @@ set statusbar-h-padding 0
 set statusbar-v-padding 0
 set page-padding 1
 map i recolor
+
+
+map <C-Z> exec "cp $FILE /home/dns/Documents/research/literature-mgmt/literature/tmp.pdf"
