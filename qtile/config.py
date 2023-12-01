@@ -34,11 +34,15 @@ def env_group_name(i, env_mode=None):
     return curr_env_name + group_names[i]
 
 @lazy.screen.function
-def goto_screen(s, i):
+def go_to_screen(s, i):
     global current_group_id
     if i != current_group_id:
         current_group_id = i
         s.toggle_group(env_group_name(i))
+
+@lazy.window.function
+def move_to_screen(w, i):
+    w.togroup(env_group_name(i))
 
 groups = [Group(env_group_name(g, e), label="󰝥") 
     for e in range(len(env_names)) 
@@ -109,14 +113,14 @@ for i, g in enumerate(groups):
             Key(
                 [mod],
                 g.name,
-                goto_screen(i),
+                go_to_screen(i),
                 desc="Switch to group {}".format(g.name),
             ),
             # mod1 + shift + letter of group = switch to & move focused window to group
             Key(
                 [mod, "shift"],
                 g.name,
-                lazy.window.togroup(g.name),
+                move_to_screen(i),
                 desc="Move focused window to group {}".format(g.name),
             ),
             # Or, use below if you prefer not to switch to that group.
