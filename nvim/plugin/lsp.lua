@@ -46,9 +46,22 @@ local on_attach = function(client, bufnr)
     bufmap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>')
 end
 
-lspconfig.ruff_lsp.setup {
+lspconfig.pyright.setup {
     on_attach = on_attach,
     root_dir = require('lspconfig').util.find_git_ancestor
+}
+
+lspconfig.gopls.setup {
+    on_attach = on_attach,
+    root_dir = require('lspconfig').util.find_git_ancestor
+}
+
+lspconfig.ltex.setup {
+    on_attach = on_attach,
+    root_dir = require('lspconfig').util.find_git_ancestor,
+    ltex = {
+        language = "en-GB"
+    }
 }
 
 -- cmp
