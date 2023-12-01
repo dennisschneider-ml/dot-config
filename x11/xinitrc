@@ -14,9 +14,11 @@ dunst &
 unclutter &
 udiskie &
 picom -b
+conky &
 # Start program to notify on changing home-directory.
 sh $XDG_DATA_HOME/pynnacle/watch-home.sh &
 sh $XDG_DATA_HOME/pynnacle/watch-ma-papers.sh &
+bash $HOME/Documents/research/literature-mgmt/run &
 
 # set mouse-knob sensitivity
 xinput set-prop 'TPPS/2 Elan TrackPoint' 'libinput Accel Speed' -0.3
