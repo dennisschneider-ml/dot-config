@@ -15,6 +15,7 @@ unclutter &
 udiskie &
 picom -b
 conky &
+flameshot &
 # Start program to notify on changing home-directory.
 sh $XDG_DATA_HOME/pynnacle/watch-home.sh &
 sh $XDG_DATA_HOME/pynnacle/watch-ma-papers.sh &
