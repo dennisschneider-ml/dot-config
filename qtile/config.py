@@ -15,14 +15,20 @@ group_names = "123456789"
 environment_mode = 0
 env_names = ["", "work_"]
 env_icons = ["", "🛠"]
-current_group_id = 0
+group_ids = [0] * len(env_names)
 
+def current_group_id():
+    return group_ids[environment_mode]
+
+def set_current_group_id(gid):
+    global group_ids
+    group_ids[environment_mode] = gid
 
 @lazy.screen.function
 def next_environment_mode(s):
     global environment_mode 
     environment_mode = (environment_mode+1)%len(env_names)
-    s.toggle_group(env_group_name(current_group_id))
+    s.toggle_group(env_group_name(current_group_id()))
     gb.visible_groups=[env_group_name(g) for g in range(len(group_names))]
     env_widget.update(env_icons[environment_mode])
 
@@ -35,9 +41,9 @@ def env_group_name(i, env_mode=None):
 
 @lazy.screen.function
 def go_to_screen(s, i):
-    global current_group_id
-    if i != current_group_id:
-        current_group_id = i
+    global current_group_ids
+    if i != current_group_id():
+        set_current_group_id(i)
         s.toggle_group(env_group_name(i))
 
 @lazy.window.function
