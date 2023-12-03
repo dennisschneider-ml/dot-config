@@ -77,7 +77,7 @@ keys = [
     Key([mod], "f", lazy.window.toggle_floating(), desc="Toggle floating"),
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     Key([mod], "b", lazy.spawn("qutebrowser"), desc="Launch browser"),
-    Key([mod], "t", lazy.spawn("sh .config/spectrwm/scripts/toggle_mousepad.sh"), desc="Launch mails"),
+    Key([mod, "shift"], "t", lazy.spawn("sh .config/spectrwm/scripts/toggle_mousepad.sh"), desc="Launch mails"),
     Key([mod, "control"], "delete", lazy.spawn("betterlockscreen --lock"), desc="Launch mails"),
     Key([mod], "space", lazy.spawn("rofi -show run"), desc="Launch browser"),
     # Toggle between different layouts as defined below
@@ -101,6 +101,7 @@ keys = [
    Key([mod], 'm', lazy.group['scratchpads'].dropdown_toggle('mails'),),
     Key([mod], 'a', lazy.group['scratchpads'].dropdown_toggle('music'),),
     Key([mod], 'u', lazy.group['scratchpads'].dropdown_toggle('math'),),
+    Key([mod], 't', lazy.group['scratchpads'].dropdown_toggle('add_task')),
     Key([mod], "escape", next_environment_mode()),
 ]
 
@@ -156,6 +157,17 @@ groups.extend([
         DropDown(
             'math',
             [terminal, '-e', 'genius'],
+            height = 0.8,
+            width = 0.4,
+            x = 0.5,
+            y = 0.1,
+            on_focus_lost_hide = True,
+            warp_pointer = True,
+        ),
+        DropDown(
+            'add_task',
+            # [terminal, '-e', 'genius'],
+            [terminal, '-e', 'sh', '/home/dns/.config/spectrwm/scripts/add_task.sh'],
             height = 0.8,
             width = 0.4,
             x = 0.5,
