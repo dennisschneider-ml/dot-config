@@ -1,58 +1,16 @@
 from libqtile.log_utils import logger
 from libqtile import bar, layout, widget
-from libqtile.config import Click, Drag, Group, Key, Match, Screen, ScratchPad, DropDown, Bar
+from libqtile.config import Click, Drag, Key, Match, Screen, ScratchPad, DropDown
 from libqtile.lazy import lazy
-from libqtile import hook
-from libqtile import qtile
+
+import workenvs
 
 # wifi
 # sound
 mod = "mod4"
 terminal = "kitty"
 
-group_names = "123456789"
 
-environment_mode = 0
-env_names = ["", "work_"]
-env_icons = ["", "🛠"]
-group_ids = [0] * len(env_names)
-
-def current_group_id():
-    return group_ids[environment_mode]
-
-def set_current_group_id(gid):
-    global group_ids
-    group_ids[environment_mode] = gid
-
-@lazy.screen.function
-def next_environment_mode(s):
-    global environment_mode 
-    environment_mode = (environment_mode+1)%len(env_names)
-    s.toggle_group(env_group_name(current_group_id()))
-    gb.visible_groups=[env_group_name(g) for g in range(len(group_names))]
-    env_widget.update(env_icons[environment_mode])
-
-def env_group_name(i, env_mode=None):
-    if env_mode is not None:
-        curr_env_name = env_names[env_mode]
-    else:
-        curr_env_name = env_names[environment_mode]
-    return curr_env_name + group_names[i]
-
-@lazy.screen.function
-def go_to_screen(s, i):
-    global current_group_ids
-    if i != current_group_id():
-        set_current_group_id(i)
-        s.toggle_group(env_group_name(i))
-
-@lazy.window.function
-def move_to_screen(w, i):
-    w.togroup(env_group_name(i))
-
-groups = [Group(env_group_name(g, e), label="󰝥") 
-    for e in range(len(env_names)) 
-    for g in range(len(group_names))]
 
 keys = [
     # A list of available commands that can be bound to keys can be found
@@ -108,35 +66,12 @@ keys = [
     Key([mod], 'a', lazy.group['scratchpads'].dropdown_toggle('music'),),
     Key([mod], 'u', lazy.group['scratchpads'].dropdown_toggle('math'),),
     Key([mod], 't', lazy.group['scratchpads'].dropdown_toggle('add_task')),
-    Key([mod], "escape", next_environment_mode()),
+    Key([mod], "escape", workenvs.next_environment_mode()),
 ]
 
-for i, g in enumerate(groups):
-    if "work_" in g.name:
-        continue
-    keys.extend(
-        [
-            # mod1 + letter of group = switch to group
-            Key(
-                [mod],
-                g.name,
-                go_to_screen(i),
-                desc="Switch to group {}".format(g.name),
-            ),
-            # mod1 + shift + letter of group = switch to & move focused window to group
-            Key(
-                [mod, "shift"],
-                g.name,
-                move_to_screen(i),
-                desc="Move focused window to group {}".format(g.name),
-            ),
-            # Or, use below if you prefer not to switch to that group.
-            # # mod1 + shift + letter of group = move focused window to group
-            # Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
-            #     desc="move focused window to group {}".format(i.name)),
-        ]
-    )
 
+groups = workenvs.setup_workenvs_groups()
+keys.extend(workenvs.setup_workenv_keys())
 
 groups.extend([
     ScratchPad('scratchpads', [
@@ -211,25 +146,11 @@ widget_defaults = dict(
 )
 extension_defaults = widget_defaults.copy()
 
-gb = widget.GroupBox(highlight_method="text",
-                     visible_groups=group_names,
-                     center_aligned=True,
-                     this_current_screen_border="#EEEEFF",
-                     active="#7777BB",
-                     background="#000000.0",
-                     fontsize=12,
-                     )
-env_widget = widget.TextBox(env_icons[environment_mode],
-                    foreground="#7777BB",
-                    background=bar_color, 
-                    padding=0,
-                    fontshadow=bar_color,
-                    fontsize=16)
 screens = [
     Screen(
         top=bar.Bar(
             [
-                env_widget,
+                workenvs.env_widget,
                 widget.Memory(format='{MemUsed: .0f} {mm}'),
                 widget.Sep(),
                 widget.ThermalSensor(),
@@ -240,7 +161,7 @@ screens = [
                                fontshadow=bar_color,
                                fontsize=16),
                 widget.Spacer(background="#000000.0"),
-                gb,
+                workenvs.gb,
                 widget.Spacer(background="#000000.0"),
                 widget.TextBox("", 
                                foreground=bar_color, 
