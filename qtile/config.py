@@ -66,12 +66,12 @@ keys = [
     Key([mod], 'a', lazy.group['scratchpads'].dropdown_toggle('music'),),
     Key([mod], 'u', lazy.group['scratchpads'].dropdown_toggle('math'),),
     Key([mod], 't', lazy.group['scratchpads'].dropdown_toggle('add_task')),
-    Key([mod], "escape", workenvs.next_environment_mode()),
+    Key([mod], "escape", workenvs.cycle_env()),
 ]
 
 
-groups = workenvs.setup_workenvs_groups()
-keys.extend(workenvs.setup_workenv_keys())
+groups = workenvs.wenvs.setup_groups()
+keys.extend(workenvs.wenvs.setup_workenv_keys())
 
 groups.extend([
     ScratchPad('scratchpads', [

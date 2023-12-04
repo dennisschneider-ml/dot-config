@@ -25,7 +25,7 @@ class Environment:
         self._active_group = group_id
 
 
-class Workenvs:
+class WorkenvManager:
 
     def __init__(self, n_groups, envs=None):
         self.n_groups = n_groups
@@ -42,14 +42,40 @@ class Workenvs:
     def cycle_env(self, rot=1):
         self._active_env_id = (self._active_env_id+rot)%len(self.envs)
 
-wenvs = Workenvs(9)
+    def setup_groups(self):
+        groups = [Group(self.envs[e].group_name(g), label="󰝥") 
+            for e in range(len(self.envs)) 
+            for g in range(self.n_groups)]
+        return groups
 
-mod = "mod4"
-bar_color = "#222255"
+    def setup_workenv_keys(self):
+        mod = "mod4"
+        keys = []
+        for i in range(self.n_groups):
+            group_name = str(i+1)
+            keys.extend(
+                [
+                    Key(
+                        [mod],
+                        group_name,
+                        go_to_screen(i),
+                        desc="Switch to group {}".format(group_name),
+                    ),
+                    Key(
+                        [mod, "shift"],
+                        group_name,
+                        move_to_screen(i),
+                        desc="Move focused window to group {}".format(group_name),
+                    ),
+                ]
+            )
+        return keys
 
+
+wenvs = WorkenvManager(9)
 
 @lazy.screen.function
-def next_environment_mode(s):
+def cycle_env(s):
     wenvs.cycle_env()
     s.toggle_group(wenvs.active_env.group_name())
     gb.visible_groups=[wenvs.active_env.group_name(g) for g in range(wenvs.n_groups)]
@@ -65,50 +91,19 @@ def go_to_screen(s, i):
 def move_to_screen(w, i):
     w.togroup(wenvs.active_env.group_name(i))
 
-def setup_workenvs_groups():
-    groups = [Group(wenvs.envs[e].group_name(g), label="󰝥") 
-        for e in range(len(wenvs.envs)) 
-        for g in range(wenvs.n_groups)]
-    return groups
 
-def setup_workenv_keys():
-    keys = []
-    for i in range(wenvs.n_groups):
-        group_name = str(i+1)
-        keys.extend(
-            [
-                # mod1 + letter of group = switch to group
-                Key(
-                    [mod],
-                    group_name,
-                    go_to_screen(i),
-                    desc="Switch to group {}".format(group_name),
-                ),
-                # mod1 + shift + letter of group = switch to & move focused window to group
-                Key(
-                    [mod, "shift"],
-                    group_name,
-                    move_to_screen(i),
-                    desc="Move focused window to group {}".format(group_name),
-                ),
-            ]
-        )
-    return keys
-
-env_widget = widget.TextBox("a",
+bar_color = "#222255"
+env_widget = widget.TextBox(wenvs.envs[0].icon,
                     foreground="#7777BB",
-                    background=bar_color, 
-                    padding=0,
                     fontshadow=bar_color,
                     fontsize=16)
 
 gb = widget.GroupBox(highlight_method="text",
-                     visible_groups="123456789",
+                     visible_groups=[str(i+1) for i in range(wenvs.n_groups)],
                      center_aligned=True,
                      this_current_screen_border="#EEEEFF",
                      active="#7777BB",
                      background="#000000.0",
                      fontsize=12,
                      )
-
 
