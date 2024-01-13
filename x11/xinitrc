@@ -14,7 +14,8 @@ dunst &
 unclutter &
 udiskie &
 picom -b
-conky &
+conky --config=$XDG_CONFIG_HOME/conky/conky-quotem.conf &
+conky --config=$XDG_CONFIG_HOME/conky/conky-taskwarrior.conf &
 flameshot &
 # Start program to notify on changing home-directory.
 sh $XDG_DATA_HOME/pynnacle/watch-home.sh &
