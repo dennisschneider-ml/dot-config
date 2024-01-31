@@ -59,7 +59,6 @@ def setup_workenvs_groups():
 def setup_workenv_keys():
     keys = []
     for i, group_name in enumerate(group_names):
-        logger.warning(group_name)
         keys.extend(
             [
                 # mod1 + letter of group = switch to group

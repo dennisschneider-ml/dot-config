@@ -1,3 +1,4 @@
+import subprocess
 from libqtile.log_utils import logger
 from libqtile import bar, layout, widget
 from libqtile.config import Click, Drag, Key, Match, Screen, ScratchPad, DropDown
@@ -35,7 +36,7 @@ keys = [
     #Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
     Key([mod, "shift"], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
 #    Key([mod], "n", lazy.spawn("sh .config/spectrwm/scripts/toggle_wifi.sh"), desc="Reset all window sizes"),
-#    Key([mod], "r", lazy.spawn("sh .config/spectrwm/scripts/toggle_bluetooth.sh"), desc="Reset all window sizes"),
+    Key([mod], "r", lazy.spawn("ruler"), desc="Reset all window sizes"),
     Key([mod], "c", lazy.spawn("sh .config/spectrwm/scripts/toggle_battery_mode.sh"), desc="Reset all window sizes"),
     Key([mod], "p", lazy.spawn("sh .config/spectrwm/scripts/pass_menu.sh"), desc="Reset all window sizes"),
     Key([mod], "f", lazy.window.toggle_floating(), desc="Toggle floating"),
@@ -67,6 +68,7 @@ keys = [
     Key([mod], 'u', lazy.group['scratchpads'].dropdown_toggle('math'),),
     Key([mod], 't', lazy.group['scratchpads'].dropdown_toggle('add_task')),
     Key([mod], "escape", workenvs.next_environment_mode()),
+    Key([mod, "shift"], 'a', lazy.spawn("sh /home/dns/.config/spectrwm/scripts/download_music.sh")),
 ]
 
 
@@ -97,7 +99,7 @@ groups.extend([
         ),
         DropDown(
             'math',
-            [terminal, '-e', 'genius'],
+            [terminal, '-e', 'kalc'],
             height = 0.8,
             width = 0.4,
             x = 0.5,
@@ -107,7 +109,6 @@ groups.extend([
         ),
         DropDown(
             'add_task',
-            # [terminal, '-e', 'genius'],
             [terminal, '-e', 'sh', '/home/dns/.config/spectrwm/scripts/add_task.sh'],
             height = 0.8,
             width = 0.4,
@@ -119,21 +120,27 @@ groups.extend([
     ]),
 ])
 
+layout_default_args = {
+    "border_focus":"#EEEEFF",
+    "border_width":1,
+    "new_client_position":"bottom",
+    "single_border_width":0,
+}
+
 layouts = [
     layout.MonadTall(
-        border_focus="#EEEEFF",
-        border_width=1,
-        new_client_position="bottom",
-        single_border_width=0,
+        **layout_default_args
     ),
     layout.MonadWide(
-        border_focus="#EEEEFF",
-        border_width=1,
-        new_client_position="bottom",
-        single_border_width=0,
+        **layout_default_args
     ),
-    layout.Max(),
-    layout.TreeTab(),
+    layout.Bsp(
+        fair=False,
+        **layout_default_args
+    ),
+
+    #layout.Max(),
+    #layout.TreeTab(),
 ]
 
 bar_color = "#222255"
@@ -146,6 +153,15 @@ widget_defaults = dict(
 )
 extension_defaults = widget_defaults.copy()
 
+def get_charge_cycles():
+    result = subprocess.check_output(["/home/dns/.config/spectrwm/scripts/charge_cycles_per_day.sh"])
+    result_str = result.decode("utf-8").strip()
+    return result_str
+
+charge_cycles_widget = widget.TextBox(
+    text=get_charge_cycles(),
+    padding=5
+)
 screens = [
     Screen(
         top=bar.Bar(
@@ -170,6 +186,7 @@ screens = [
                                padding=0,
                                fontsize=16),
                 widget.Battery(unknown_char=""),
+                charge_cycles_widget,
                 widget.Sep(),
                 widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
             ],
