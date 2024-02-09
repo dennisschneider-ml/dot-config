@@ -14,18 +14,16 @@ dunst &
 unclutter &
 udiskie &
 picom -b
-conky --config=$XDG_CONFIG_HOME/conky/conky-quotem.conf &
-conky --config=$XDG_CONFIG_HOME/conky/conky-taskwarrior.conf &
+conky --config=$XDG_CONFIG_HOME/conky/conky-quotem.conf -d
+# conky --config=$XDG_CONFIG_HOME/conky/conky-taskwarrior.conf -d
 flameshot &
 # Start program to notify on changing home-directory.
 sh $XDG_DATA_HOME/pynnacle/watch-home.sh &
-sh $XDG_DATA_HOME/pynnacle/watch-ma-papers.sh &
-bash $HOME/Documents/research/literature-mgmt/run &
 
 # set mouse-knob sensitivity
 xinput set-prop 'TPPS/2 Elan TrackPoint' 'libinput Accel Speed' -0.3
 xinput set-prop 'SynPS/2 Synaptics TouchPad' 'Device Enabled' 0
 
 # Finally, start window-manager.
-exec qtile start
+exec /bin/qtile start
 #exec spectrwm
