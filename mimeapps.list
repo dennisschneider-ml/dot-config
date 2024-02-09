@@ -14,4 +14,6 @@ image/jpeg=image.desktop
 image/gif=image.desktop
 x-scheme-handler/mailto=mail.desktop
 x-scheme-handler/http=web-browser.desktop
+x-scheme-handler/https=web-browser.desktop
 inode/directory=file.desktop
+x-scheme-handler/msteams=teams.desktop
