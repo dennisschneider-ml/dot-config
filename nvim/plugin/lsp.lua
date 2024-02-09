@@ -52,8 +52,8 @@ lspconfig.pyright.setup {
 }
 
 lspconfig.gopls.setup {
-    on_attach = on_attach,
-    root_dir = require('lspconfig').util.find_git_ancestor
+   on_attach = on_attach,
+   root_dir = require('lspconfig').util.find_git_ancestor
 }
 
 lspconfig.ltex.setup {
