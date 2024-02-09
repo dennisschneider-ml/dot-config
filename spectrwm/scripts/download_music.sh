@@ -12,10 +12,11 @@ function is_browser_window() {
 active_window_id=$(xdotool getactivewindow)
 
 if is_browser_window $active_window_id 'Brave-browser'; then
-    old_cache=$(xclip -o)
+    #old_cache=$(xclip -o)
     xdotool key --clearmodifiers --window $active_window_id 'ctrl+l+c'
     url=$(xclip -o)
-    echo $old_cache | xclip -o -selection clipboard
+    #echo $old_cache | xclip -o -selection clipboard
+    dunstify "$url"
     if [[ $url == *'youtube.'* ]]; then
         artist=$(ls Music | rofi -dmenu -p "Artist") 
         [ -z "$artist" ] && exit 1
