@@ -6,80 +6,66 @@ from libqtile.lazy import lazy
 
 import workenvs
 
-# wifi
-# sound
 mod = "mod4"
 terminal = "kitty"
 
 
-
 keys = [
-    # A list of available commands that can be bound to keys can be found
-    # at https://docs.qtile.org/en/latest/manual/config/lazy.html
-    # Switch between windows
+    # Switch between windows.
     Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
     Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
     Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
     Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
-    #Key([mod], "space", lazy.layout.next(), desc="Move window focus to other window"),
-    # Move windows between left/right columns or move up/down in current stack.
-    # Moving out of range in Columns layout will create new column.
-    #Key([mod, "shift"], "h", lazy.layout.shuffle_left(), desc="Move window to the left"),
+    # Move windows within workspace.
     Key([mod, "shift"], "k", lazy.layout.shuffle_up(), desc="Move window up"),
     Key([mod, "shift"], "j", lazy.layout.shuffle_down(), desc="Move window down"),
-    #Key([mod, "shift"], "k", lazy.layout.shuffle_up(), desc="Move window up"),
-    # Grow windows. If current window is on the edge of screen and direction
-    # will be to screen edge - window would shrink.
+    # Grow/Shrink windows.
     Key([mod, "shift"], "h", lazy.layout.shrink(), desc="Grow window to the right"),
     Key([mod, "shift"], "l", lazy.layout.grow(), desc="Grow window to the left"),
-    #Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
-    #Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
-    Key([mod, "shift"], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
-#    Key([mod], "n", lazy.spawn("sh .config/spectrwm/scripts/toggle_wifi.sh"), desc="Reset all window sizes"),
-    Key([mod], "r", lazy.spawn("ruler"), desc="Reset all window sizes"),
-    Key([mod], "c", lazy.spawn("sh .config/spectrwm/scripts/toggle_battery_mode.sh"), desc="Reset all window sizes"),
-    Key([mod], "p", lazy.spawn("sh .config/spectrwm/scripts/pass_menu.sh"), desc="Reset all window sizes"),
+    # Window Management.
     Key([mod], "f", lazy.window.toggle_floating(), desc="Toggle floating"),
-    Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
-    Key([mod], "b", lazy.spawn("qutebrowser"), desc="Launch browser"),
-    Key([mod, "shift"], "t", lazy.spawn("sh .config/spectrwm/scripts/toggle_mousepad.sh"), desc="Launch mails"),
-    Key([mod, "control"], "delete", lazy.spawn("betterlockscreen --lock"), desc="Launch mails"),
-    Key([mod], "space", lazy.spawn("rofi -show run"), desc="Launch browser"),
-    # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.window.toggle_fullscreen(), desc="Toggle fullscreen"),
-    Key([mod, "shift"], "Tab", lazy.next_layout(), desc="Toggle fullscreen"),
-    Key([mod, "shift"], "b", lazy.hide_show_bar("top"), desc="Launch browser"),
+    Key([mod, "shift"], "Tab", lazy.next_layout(), desc="Next layout"),
+    Key([mod, "shift"], "b", lazy.hide_show_bar("top"), desc="Toggle menubar"),
     Key([mod], "w", lazy.spawn("Qminimize -m"), desc="Minimize focused window"),
-    Key([mod, "shift"], "w", lazy.spawn("Qminimize -u"), desc="Minimize focused window"),
+    Key([mod, "shift"], "w", lazy.spawn("Qminimize -u"), desc="List minimized windows"),
     Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
-
-
-    Key([mod], "i", lazy.spawn("sh .config/spectrwm/scripts/invert_colors.sh"), desc="Reload the config"),
-    Key([], "XF86MonBrightnessUp", lazy.spawn("sh /home/dns/.config/spectrwm/scripts/inc_brightness.sh")),
-    Key([], "XF86MonBrightnessDown", lazy.spawn("sh /home/dns/.config/spectrwm/scripts/dec_brightness.sh")),
-    Key([], "XF86AudioRaiseVolume", lazy.spawn("sh /home/dns/.config/spectrwm/scripts/inc_volume.sh")),
-    Key([], "XF86AudioLowerVolume", lazy.spawn("sh /home/dns/.config/spectrwm/scripts/dec_volume.sh")),
-    Key([], "XF86AudioMute", lazy.spawn("sh /home/dns/.config/spectrwm/scripts/mute_volume.sh")),
-    Key([mod], "s", lazy.spawn("flameshot gui")),
-    Key([mod, "shift"], "s", lazy.spawn("flameshot screen")),
-   Key([mod], 'm', lazy.group['scratchpads'].dropdown_toggle('mails'),),
-    Key([mod], 'a', lazy.group['scratchpads'].dropdown_toggle('music'),),
-    Key([mod], 'u', lazy.group['scratchpads'].dropdown_toggle('math'),),
-    Key([mod], 't', lazy.group['scratchpads'].dropdown_toggle('add_task')),
-    Key([mod], "escape", workenvs.next_environment_mode()),
-    Key([mod, "shift"], 'a', lazy.spawn("sh /home/dns/.config/spectrwm/scripts/download_music.sh")),
+    # Programs/Scripts.
+    Key([mod], "r", lazy.spawn("ruler"), desc="Ruler"),
+    Key([mod], "p", lazy.spawn("sh .config/spectrwm/scripts/pass_menu.sh"), desc="Password manager"),
+    Key([mod], "Return", lazy.spawn(terminal), desc="Terminal"),
+    Key([mod], "b", lazy.spawn("qutebrowser"), desc="Browser"),
+    # Auxiliary usages.
+    Key([mod], "c", lazy.spawn("sh .config/spectrwm/scripts/toggle_battery_mode.sh"), desc="Toggle battery usage mode"),
+    Key([mod, "shift"], "t", lazy.spawn("sh .config/spectrwm/scripts/toggle_mousepad.sh"), desc="Toggle trackpad"),
+    Key([mod, "control"], "delete", lazy.spawn("betterlockscreen --lock"), desc="Lock screen"),
+    Key([mod], "space", lazy.spawn("rofi -show run"), desc="Application launcher"),
+    Key([mod], "s", lazy.spawn("flameshot gui"), desc="Screenshot"),
+    Key([mod, "shift"], "s", lazy.spawn("flameshot screen"), desc="Screenshot entire screen"),
+    Key([mod], "i", lazy.spawn("sh .config/spectrwm/scripts/invert_colors.sh"), desc="Invert colors of focused window"),
+    Key([], "XF86MonBrightnessUp", lazy.spawn("sh /home/dns/.config/spectrwm/scripts/inc_brightness.sh"), desc="Increase screen brightness"),
+    Key([], "XF86MonBrightnessDown", lazy.spawn("sh /home/dns/.config/spectrwm/scripts/dec_brightness.sh"), desc="Decrease screen brightness"),
+    Key([], "XF86AudioRaiseVolume", lazy.spawn("sh /home/dns/.config/spectrwm/scripts/inc_volume.sh"), desc="Increase audio volume"),
+    Key([], "XF86AudioLowerVolume", lazy.spawn("sh /home/dns/.config/spectrwm/scripts/dec_volume.sh"), desc="Decrease audio volume"),
+    Key([], "XF86AudioMute", lazy.spawn("sh /home/dns/.config/spectrwm/scripts/mute_volume.sh"), desc="Mute audio"),
+    # Scratchpads
+    Key([mod], 'm', lazy.group['scratchpads'].dropdown_toggle('mails'), desc="Mails"),
+    Key([mod], 'a', lazy.group['scratchpads'].dropdown_toggle('music'), desc="Music player"),
+    Key([mod], 'u', lazy.group['scratchpads'].dropdown_toggle('math'), desc="Math utility"),
+    Key([mod], 't', lazy.group['scratchpads'].dropdown_toggle('add_task'), desc="Task/ToDo list"),
+    Key([mod, "shift"], 'a', lazy.spawn("sh /home/dns/.config/spectrwm/scripts/download_music.sh"), desc="Audio download utility"),
 ]
 
 
 groups = workenvs.setup_workenvs_groups()
-keys.extend(workenvs.setup_workenv_keys())
+keys.extend(workenvs.setup_workenv_keys([mod], "escape"))
 
 groups.extend([
     ScratchPad('scratchpads', [
         DropDown(
             'music',
-            [terminal, '-e', 'ncmpcpp'],
+            f'{terminal} -e ncmpcpp',
             height = 0.8,
             width = 0.8,
             x = 0.1,
@@ -89,7 +75,7 @@ groups.extend([
         ),
         DropDown(
             'mails',
-            [terminal, '-e', 'neomutt'],
+            f'{terminal} -e neomutt',
             height = 0.8,
             width = 0.8,
             x = 0.1,
@@ -99,7 +85,7 @@ groups.extend([
         ),
         DropDown(
             'math',
-            [terminal, '-e', 'kalc'],
+            f'{terminal} -e kalc',
             height = 0.8,
             width = 0.4,
             x = 0.5,
@@ -109,7 +95,7 @@ groups.extend([
         ),
         DropDown(
             'add_task',
-            [terminal, '-e', 'sh', '/home/dns/.config/spectrwm/scripts/add_task.sh'],
+            f'{terminal} -e sh /home/dns/.config/spectrwm/scripts/add_task.sh',
             height = 0.8,
             width = 0.4,
             x = 0.5,
@@ -138,9 +124,6 @@ layouts = [
         fair=False,
         **layout_default_args
     ),
-
-    #layout.Max(),
-    #layout.TreeTab(),
 ]
 
 bar_color = "#222255"
@@ -153,15 +136,6 @@ widget_defaults = dict(
 )
 extension_defaults = widget_defaults.copy()
 
-def get_charge_cycles():
-    result = subprocess.check_output(["/home/dns/.config/spectrwm/scripts/charge_cycles_per_day.sh"])
-    result_str = result.decode("utf-8").strip()
-    return result_str
-
-charge_cycles_widget = widget.TextBox(
-    text=get_charge_cycles(),
-    padding=5
-)
 screens = [
     Screen(
         top=bar.Bar(
@@ -185,8 +159,12 @@ screens = [
                                fontshadow=bar_color,
                                padding=0,
                                fontsize=16),
-                widget.Battery(unknown_char=""),
-                charge_cycles_widget,
+                widget.Battery(not_charging_char=""),
+                widget.GenPollCommand(
+                    cmd="/home/dns/.config/spectrwm/scripts/charge_cycles_per_day.sh",
+                    foreground="#AAAAAA",
+                    update_interval=3600
+                ),
                 widget.Sep(),
                 widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
             ],

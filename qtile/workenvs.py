@@ -50,14 +50,32 @@ def move_to_screen(w, i):
     w.togroup(env_group_name(i))
 
 def setup_workenvs_groups():
-    groups = [Group(env_group_name(g, e), label="󰝥") 
-        for e in range(len(env_names)) 
+    groups = [Group(env_group_name(g, e), label="󰝥")
+        for e in range(len(env_names))
         for g in range(len(group_names))]
     return groups
 
+def setup_workenv_keys(modifiers=None, key="escape"):
+    if modifiers is None:
+        modifiers = ["mod4"]
+    """Initialize keys to the workenv workflow.
+    Cycling between both screens and workenvs.
 
-def setup_workenv_keys():
-    keys = []
+    Parameters
+    ----------
+    modifiers : list[str]
+        A list of modifiers, usually the default modifier mod.
+    key : str
+        The key to trigger the workenv-cycling.
+
+    Returns
+    -------
+    list[Key]
+        The keys needed to cycle between both screens and workenvs.
+    """
+    keys = [
+        Key(modifiers, key, next_environment_mode(), desc="Cycle workenv")
+    ]
     for i, group_name in enumerate(group_names):
         keys.extend(
             [
