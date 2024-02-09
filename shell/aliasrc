@@ -5,7 +5,6 @@
 alias \
 	cp="cp -iv" \
 	mv="mv -iv" \
-	rm="rm -vI" \
 	mkd="mkdir -pv" \
 	cat="bat --plain --theme OneHalfDark " \
     s="kitten ssh" # Kitty-stuff.
@@ -65,6 +64,12 @@ alias eduroam-disconnect='sudo pkill wpa_supplicant; sudo systemctl stop dhcpcd;
 alias print='sudo systemctl start cups; lp -d ts5000'
 # There is no reason, why the printing-deamon should run all the time.
 alias print-end='sudo systemctl stop cups'
+
+# Save remove.
+function save_remove {
+    \mv $@ /tmp
+}
+alias rm='save_remove'
 
 # Fuzzy Find
 alias fzf="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'"
