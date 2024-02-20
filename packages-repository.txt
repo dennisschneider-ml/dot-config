@@ -1,0 +1,19 @@
+# Base
+qtile
+ttf-hack-nerd
+alacritty
+qutebrowser
+nsxiv
+zoxide
+zsh
+starship
+picom
+xwallpaper
+bat
+tlp
+vivid
+bluez
+bluez-utils
+bluetuith
+
+brave-bin
