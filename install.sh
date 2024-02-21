@@ -1,7 +1,9 @@
 #!/bin/bash
 
+# Copy configurations.
 cp -ar config ~/.config
 
+# Install packages.
 if which yay &> /dev/null; then
     yay -Syu --needed $(awk '!/^#/{print $0}' packages-repository.txt)
 else
@@ -15,4 +17,10 @@ if [ $(basename "$SHELL") != "zsh" ]; then
 fi
 echo "export ZDOTDIR=$HOME/.config/zsh" > ~/.zshenv
 
+# Setup rofi theme (Dracula).
+rofi_theme_dir="$HOME/.local/share/rofi/themes"
+mkdir -p $rofi_theme_dir
+if [ "$(ls -A $rofi_theme_dir 2> /dev/null | wc -l)" -eq 0 ]; then
+    curl https://raw.githubusercontent.com/dracula/rofi/master/theme/config1.rasi -o "$rofi_theme_dir"/theme.rasi
+fi
 
